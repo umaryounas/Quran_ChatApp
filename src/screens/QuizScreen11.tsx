@@ -10,19 +10,19 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {UserData} from '../types';
+import {NavigationProp} from '../types/navigation';
 
-const QuizScreen11 = ({ route }: { route: any }) => {
-    const { width } = Dimensions.get('window');
-  const { userData = {} } = route.params || {};
+const QuizScreen11 = ({route}: {route: any}) => {
+  const {width} = Dimensions.get('window');
+  const {userData = {}} = route.params || {};
   const navigation = useNavigation<NavigationProp>();
 
   const handleContinue = () => {
     console.log('Moving to next screen with data:', userData);
-    navigation.navigate('QuizScreen12', { userData });
+    navigation.navigate('QuizScreen12', {userData});
   };
 
   const handleBack = () => {
@@ -30,7 +30,7 @@ const QuizScreen11 = ({ route }: { route: any }) => {
   };
 
   const handleSkip = () => {
-    navigation.navigate('QuizScreen12', { userData });
+    navigation.navigate('QuizScreen12', {userData});
   };
 
   return (
@@ -38,8 +38,7 @@ const QuizScreen11 = ({ route }: { route: any }) => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
+        keyboardVerticalOffset={50}>
         <SafeAreaView style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
@@ -54,7 +53,7 @@ const QuizScreen11 = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '90%' }]} />
+              <View style={[styles.progress, {width: '90%'}]} />
             </View>
           </View>
 
@@ -62,15 +61,18 @@ const QuizScreen11 = ({ route }: { route: any }) => {
           <View style={styles.content}>
             <View style={styles.securityContainer}>
               <View style={styles.imageContainer}>
-                          <Image
-                            source={require('../assets/images/Lock.png')} // Replace with your image
-                            style={{ width: width * 0.4, height: width * 0.4 }}
-                            resizeMode="contain"
-                          />
-                        </View>
-              <Text style={styles.securityTitle}>Your Data is 100% Private & Secure</Text>
+                <Image
+                  source={require('../assets/images/Lock.png')} // Replace with your image
+                  style={{width: width * 0.4, height: width * 0.4}}
+                  resizeMode="contain"
+                />
+              </View>
+              <Text style={styles.securityTitle}>
+                Your Data is 100% Private & Secure
+              </Text>
               <Text style={styles.securityDescription}>
-                Our promise ensures your data is fully anonymous and protected. Your information is encrypted, confidential and never shared!
+                Our promise ensures your data is fully anonymous and protected.
+                Your information is encrypted, confidential and never shared!
               </Text>
             </View>
           </View>
@@ -78,8 +80,7 @@ const QuizScreen11 = ({ route }: { route: any }) => {
           {/* Continue Button */}
           <TouchableOpacity
             style={styles.continueButton}
-            onPress={handleContinue}
-          >
+            onPress={() => handleContinue()}>
             <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
         </SafeAreaView>

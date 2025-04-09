@@ -1,45 +1,52 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Dimensions, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Dimensions,
+  Image,
+} from 'react-native';
 import GradientBackground from '../components/GradientBackground';
 import PrimaryButton from '../components/Button';
 import Header from '../components/Header';
 import ContentContainer from '../components/ContentContainer';
 import ProgressSteps from '../components/ProgressBar';
-import { useNavigation } from '@react-navigation/native';
-import { NavigationProp } from '../types/navigation';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '../types/navigation';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const TransitionScreen1 = () => {
   const navigation = useNavigation<NavigationProp>();
-  
+
   return (
     <GradientBackground>
       <StatusBar backgroundColor="#0A333A" barStyle="light-content" />
-      
+
       <View style={styles.progressContainer}>
         <ProgressSteps currentStep={1} totalSteps={5} />
       </View>
-      
+
       <ContentContainer>
         {/* Main content area */}
         <View style={styles.contentArea}>
           <View style={styles.imageContainer}>
-              <Image 
-              source={require('../assets/images/Frame.png')} 
-              style={{ width: width * 0.8, height: width * 0.8 }} 
-              />
-  
+            <Image
+              source={require('../assets/images/Frame.png')}
+              style={{width: width * 0.8, height: width * 0.8}}
+            />
           </View>
-          
+
           <Header title="Your Personal AI for Quranic Wisdom" />
-          
+
           <Text style={styles.descriptionText}>
-            Ask anything about life, faith, or struggles. Get instant answers based on the Quran & Hadith.
+            Ask anything about life, faith, or struggles. Get instant answers
+            based on the Quran & Hadith.
           </Text>
         </View>
       </ContentContainer>
-      
+
       <View style={styles.bottomContainer}>
         <PrimaryButton
           title="I Want to Know More"

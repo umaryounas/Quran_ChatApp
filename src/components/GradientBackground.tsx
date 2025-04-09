@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 type GradientBackgroundProps = {
@@ -8,19 +8,18 @@ type GradientBackgroundProps = {
   locations?: number[];
 };
 
-const GradientBackground = ({ 
-  children, 
+const GradientBackground = ({
+  children,
   colors = ['#0A333A', '#0F4A4A', '#1A5A52', '#236952'],
-  locations = [0, 0.3, 0.6, 1]
+  locations = [0, 0.3, 0.6, 1],
 }: GradientBackgroundProps) => {
   return (
-    <LinearGradient 
-      colors={colors} 
+    <LinearGradient
+      colors={colors}
       style={styles.container}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 0, y: 1 }}
-      locations={locations}
-    >
+      start={{x: 0, y: 0}}
+      end={{x: 0, y: 1}}
+      locations={locations}>
       {children}
     </LinearGradient>
   );
@@ -31,8 +30,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
   },
 });
 
