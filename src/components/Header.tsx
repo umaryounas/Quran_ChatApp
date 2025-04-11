@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 interface HeaderProps {
   title: string;
   subtitle?: string;
 }
 
-const Header = ({ title, subtitle }: HeaderProps) => {
+const Header = ({title, subtitle}: HeaderProps) => {
   return (
     <View style={styles.headerContainer}>
       <Text style={styles.headerTitle}>{title}</Text>
@@ -27,12 +27,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#e4e4e7',
     textAlign: 'center',
+    fontFamily: 'MontserratRegular',
   },
   headerSubtitle: {
     fontSize: 14,
     color: '#e0e0e0',
     textAlign: 'center',
     marginTop: 5,
+    fontFamily: 'MontserratRegular',
   },
 });
 

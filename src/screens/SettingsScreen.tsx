@@ -10,16 +10,16 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const SettingsScreen = () => {
   const navigation = useNavigation<NavigationProp>();
 
   const handleGoBack = () => {
-    navigation.navigate('DiscountScreen');
+    navigation.goBack();
   };
 
   const navigateTo = (screen: any) => {
@@ -27,17 +27,16 @@ const SettingsScreen = () => {
   };
 
   const renderSettingItem = (
-    title: string, 
-    iconName: string, 
-    screen: string, 
-    hasToggle: boolean = false, 
+    title: string,
+    iconName: string,
+    screen: string,
+    hasToggle: boolean = false,
     isToggled: boolean = false,
-    value: string = ''
+    value: string = '',
   ) => (
-    <TouchableOpacity 
-      style={styles.settingItem} 
-      onPress={() => navigateTo(screen)}
-    >
+    <TouchableOpacity
+      style={styles.settingItem}
+      onPress={() => navigateTo(screen)}>
       <View style={styles.settingIconContainer}>
         <Ionicons name={iconName} size={20} color="#FFFFFF" />
       </View>
@@ -45,8 +44,17 @@ const SettingsScreen = () => {
       <View style={styles.settingRight}>
         {value && <Text style={styles.settingValue}>{value}</Text>}
         {hasToggle ? (
-          <View style={[styles.toggleContainer, isToggled ? styles.toggleActive : {}]}>
-            <View style={[styles.toggleCircle, isToggled ? styles.toggleCircleActive : {}]} />
+          <View
+            style={[
+              styles.toggleContainer,
+              isToggled ? styles.toggleActive : {},
+            ]}>
+            <View
+              style={[
+                styles.toggleCircle,
+                isToggled ? styles.toggleCircleActive : {},
+              ]}
+            />
           </View>
         ) : (
           <Ionicons name="chevron-forward" size={20} color="#A7A7A7" />
@@ -71,43 +79,142 @@ const SettingsScreen = () => {
         <ScrollView style={styles.content}>
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Account & Subscription</Text>
-            {renderSettingItem('Profile Information', 'person-outline', 'ProfileInformationScreen')}
-            {renderSettingItem('Change Password', 'lock-closed-outline', 'ChangePasswordScreen')}
-            {renderSettingItem('Subscription Management', 'card-outline', 'SubscriptionManagementScreen')}
+            {renderSettingItem(
+              'Profile Information',
+              'person-outline',
+              'ProfileInformationScreen',
+            )}
+            {renderSettingItem(
+              'Change Password',
+              'lock-closed-outline',
+              'ChangePasswordScreen',
+            )}
+            {renderSettingItem(
+              'Subscription Management',
+              'card-outline',
+              'SubscriptionManagementScreen',
+            )}
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Chat Preferences</Text>
-            {renderSettingItem('Voice-to-Text Settings', 'mic-outline', 'VoiceToTextSettingsScreen')}
-            {renderSettingItem('AI Response Length', 'text-outline', 'AIResponseLengthScreen', false, false, 'Medium')}
-            {renderSettingItem('Suggested Prompts', 'bulb-outline', '', true, true)}
-            {renderSettingItem('Save Chat History', 'save-outline', '', true, true)}
+            {renderSettingItem(
+              'Voice-to-Text Settings',
+              'mic-outline',
+              'VoiceToTextSettingsScreen',
+            )}
+            {renderSettingItem(
+              'AI Response Length',
+              'text-outline',
+              'AIResponseLengthScreen',
+              false,
+              false,
+              'Medium',
+            )}
+            {renderSettingItem(
+              'Suggested Prompts',
+              'bulb-outline',
+              '',
+              true,
+              true,
+            )}
+            {renderSettingItem(
+              'Save Chat History',
+              'save-outline',
+              '',
+              true,
+              true,
+            )}
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Appearance & Accessibility</Text>
             {renderSettingItem('Dark Mode', 'moon-outline', '', true, true)}
-            {renderSettingItem('Font Size Adjustments', 'text-outline', '', false, false, 'Small')}
-            {renderSettingItem('Background Theme', 'color-palette-outline', '', false, false, 'Default')}
-            {renderSettingItem('Text-to-Speech', 'volume-high-outline', '', true, true)}
-            {renderSettingItem('Haptic Feedback', 'hand-right-outline', '', true, true)}
+            {renderSettingItem(
+              'Font Size Adjustments',
+              'text-outline',
+              '',
+              false,
+              false,
+              'Small',
+            )}
+            {renderSettingItem(
+              'Background Theme',
+              'color-palette-outline',
+              '',
+              false,
+              false,
+              'Default',
+            )}
+            {renderSettingItem(
+              'Text-to-Speech',
+              'volume-high-outline',
+              '',
+              true,
+              true,
+            )}
+            {renderSettingItem(
+              'Haptic Feedback',
+              'hand-right-outline',
+              '',
+              true,
+              true,
+            )}
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Privacy & Security</Text>
-            {renderSettingItem('Two-Factor Authentication', 'shield-checkmark-outline', '', true, true)}
-            {renderSettingItem('Set App Lock', 'lock-closed-outline', 'AppLockMainScreen')}
-            {renderSettingItem('Clear Chat History', 'trash-outline', 'ClearHistoryScreen')}
-            {renderSettingItem('Download My Data', 'download-outline', 'DownloadDataScreen')}
-            {renderSettingItem('Manage Connected Devices', 'phone-portrait-outline', 'ManageDevicesScreen')}
+            {renderSettingItem(
+              'Two-Factor Authentication',
+              'shield-checkmark-outline',
+              '',
+              true,
+              true,
+            )}
+            {renderSettingItem(
+              'Set App Lock',
+              'lock-closed-outline',
+              'AppLockMainScreen',
+            )}
+            {renderSettingItem(
+              'Clear Chat History',
+              'trash-outline',
+              'ClearHistoryScreen',
+            )}
+            {renderSettingItem(
+              'Download My Data',
+              'download-outline',
+              'DownloadDataScreen',
+            )}
+            {renderSettingItem(
+              'Manage Connected Devices',
+              'phone-portrait-outline',
+              'ManageDevicesScreen',
+            )}
           </View>
 
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Help & Support</Text>
-            {renderSettingItem('FAQs & Quick Tips', 'help-circle-outline', 'FAQsScreen')}
-            {renderSettingItem('Contact Support', 'mail-outline', 'ContactSupportScreen')} 
-            {renderSettingItem('Report a Problem', 'warning-outline', 'ReportProblemScreen')}
-            {renderSettingItem('Community & Feedback', 'people-outline', 'CommunityFeedbackScreen')}
+            {renderSettingItem(
+              'FAQs & Quick Tips',
+              'help-circle-outline',
+              'FAQsScreen',
+            )}
+            {renderSettingItem(
+              'Contact Support',
+              'mail-outline',
+              'ContactSupportScreen',
+            )}
+            {renderSettingItem(
+              'Report a Problem',
+              'warning-outline',
+              'ReportProblemScreen',
+            )}
+            {renderSettingItem(
+              'Community & Feedback',
+              'people-outline',
+              'CommunityFeedbackScreen',
+            )}
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -119,7 +226,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    
   },
   header: {
     marginTop: 20,
@@ -128,7 +234,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderBottomWidth: 1, 
+    borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.2)',
     marginBottom: 10,
   },

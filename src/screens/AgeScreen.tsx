@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -11,19 +11,19 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
+import {User} from '../data/models/domain/user';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-const AgeScreen = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
+const AgeScreen = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
   const [selectedAge, setSelectedAge] = useState<number>(userData.age || 25);
   const navigation = useNavigation<NavigationProp>();
-  const ageOptions = Array.from({ length: 100 }, (_, i) => i + 1); // Ages 1-100
-  
+  const ageOptions = [23, 24, 25, 26, 27]; // Ages 1-100
+
   const flatListRef = useRef<FlatList>(null);
   const itemHeight = 60; // Height of each age item
 
@@ -42,12 +42,12 @@ const AgeScreen = ({ route }: { route: any }) => {
   }, []);
 
   const handleContinue = () => {
-    const updatedUserData: UserData = {
+    const updatedUserData: User = {
       ...userData,
       age: selectedAge,
     };
 
-    navigation.navigate('GenderScreen', { userData: updatedUserData });
+    navigation.navigate('GenderScreen', {userData: updatedUserData});
   };
 
   const handleBack = () => {
@@ -55,11 +55,11 @@ const AgeScreen = ({ route }: { route: any }) => {
   };
 
   const handleSkip = () => {
-    const updatedUserData: UserData = {
+    const updatedUserData: User = {
       ...userData,
       age: null,
     };
-    navigation.navigate('GenderScreen', { userData: updatedUserData });
+    navigation.navigate('GenderScreen', {userData: updatedUserData});
   };
 
   const handleScroll = (event: any) => {
@@ -70,15 +70,12 @@ const AgeScreen = ({ route }: { route: any }) => {
     }
   };
 
-  const renderAgeItem = ({ item, index }: { item: number; index: number }) => {
+  const renderAgeItem = ({item, index}: {item: number; index: number}) => {
     const isSelected = item === selectedAge;
-    
+
     return (
       <TouchableOpacity
-        style={[
-          styles.ageItem,
-          isSelected && styles.selectedAgeItem,
-        ]}
+        style={[styles.ageItem, isSelected && styles.selectedAgeItem]}
         onPress={() => {
           setSelectedAge(item);
           flatListRef.current?.scrollToIndex({
@@ -86,14 +83,12 @@ const AgeScreen = ({ route }: { route: any }) => {
             animated: true,
             viewPosition: 0.5, // Center the item
           });
-        }}
-      >
+        }}>
         <Text
           style={[
             styles.ageText,
             isSelected ? styles.selectedAgeText : styles.unselectedAgeText,
-          ]}
-        >
+          ]}>
           {item}
         </Text>
       </TouchableOpacity>
@@ -105,8 +100,7 @@ const AgeScreen = ({ route }: { route: any }) => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
+        keyboardVerticalOffset={50}>
         <SafeAreaView style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
@@ -121,7 +115,7 @@ const AgeScreen = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '18%' }]} />
+              <View style={[styles.progress, {width: '18%'}]} />
             </View>
           </View>
 
@@ -137,7 +131,7 @@ const AgeScreen = ({ route }: { route: any }) => {
                 ref={flatListRef}
                 data={ageOptions}
                 renderItem={renderAgeItem}
-                keyExtractor={(item) => item.toString()}
+                keyExtractor={item => item.toString()}
                 showsVerticalScrollIndicator={false}
                 onMomentumScrollEnd={handleScroll}
                 getItemLayout={(data, index) => ({
@@ -149,8 +143,8 @@ const AgeScreen = ({ route }: { route: any }) => {
                 snapToAlignment="center"
                 decelerationRate="fast"
                 contentContainerStyle={styles.agePickerContent}
-                ListHeaderComponent={<View style={{ height: itemHeight * 2 }} />}
-                ListFooterComponent={<View style={{ height: itemHeight * 2 }} />}
+                ListHeaderComponent={<View style={{height: itemHeight * 2}} />}
+                ListFooterComponent={<View style={{height: itemHeight * 2}} />}
               />
             </View>
           </View>
@@ -158,11 +152,10 @@ const AgeScreen = ({ route }: { route: any }) => {
           {/* Continue Button */}
           <TouchableOpacity
             style={styles.continueButton}
-            onPress={handleContinue}
-          >
+            onPress={handleContinue}>
             <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
-          
+
           {/* Home Indicator */}
           {/* <View style={styles.homeIndicator}>
             <View style={styles.homeIndicatorBar} />
@@ -225,11 +218,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
+    fontFamily: 'MontserratRegular',
   },
   subtitle: {
     color: 'white',
     fontSize: 16,
     marginBottom: 30,
+    fontFamily: 'MontserratRegular',
   },
   agePickerContainer: {
     width: '100%',
@@ -280,6 +275,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   continueButtonText: {
+    fontFamily: 'MontserratRegular',
     color: '#0A333A',
     fontWeight: 'bold',
     fontSize: 16,

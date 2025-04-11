@@ -6,13 +6,22 @@
  */
 
 import React from 'react';
-import RootNavigator from './src/routes/AppNavigation';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {store, persistor} from './src/store/store';
+import AppNavigation from './src/routes/AppNavigation';
+import {MenuProvider} from 'react-native-popup-menu';
 
-
-function App(): React.JSX.Element {
+const App = () => {
   return (
-    <RootNavigator />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <MenuProvider>
+          <AppNavigation />
+        </MenuProvider>
+      </PersistGate>
+    </Provider>
   );
-}
+};
 
 export default App;

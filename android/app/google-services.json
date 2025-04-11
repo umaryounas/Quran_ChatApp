@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "467189020444",
+    "project_id": "quranchat-baa46",
+    "storage_bucket": "quranchat-baa46.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467189020444:android:b582e1939cda1bafcfecd9",
+        "android_client_info": {
+          "package_name": "com.quran.chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPQQ14ZGUQEEh4HxfQpSUPUh4jpVdlE9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

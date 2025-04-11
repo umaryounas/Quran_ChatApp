@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 interface PrimaryButtonProps {
   title: string;
@@ -7,7 +7,7 @@ interface PrimaryButtonProps {
   style?: object;
 }
 
-const PrimaryButton = ({ title, onPress, style }: PrimaryButtonProps) => {
+const PrimaryButton = ({title, onPress, style}: PrimaryButtonProps) => {
   return (
     <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#000',
+    fontFamily: 'MontserratBold',
   },
 });
 

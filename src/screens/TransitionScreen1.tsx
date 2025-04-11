@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: 20,
     marginTop: 10,
+    fontFamily: 'MontserratRegular',
   },
   bottomContainer: {
     width: width,

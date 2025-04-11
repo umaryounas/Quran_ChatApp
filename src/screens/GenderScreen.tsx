@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,24 +8,26 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
+import {User} from '../data/models/domain/user';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-const GenderScreen = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
-  const [selectedGender, setSelectedGender] = useState<string>(userData.gender || '');
+const GenderScreen = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
+  const [selectedGender, setSelectedGender] = useState<string>(
+    userData.gender || '',
+  );
   const navigation = useNavigation<NavigationProp>();
 
   const handleGenderSelect = (gender: string) => {
-    const updatedUserData: UserData = {
+    const updatedUserData: User = {
       ...userData,
       gender: gender,
     };
-    navigation.navigate('QuranConnectionScreen', { userData: updatedUserData });
+    navigation.navigate('QuranConnectionScreen', {userData: updatedUserData});
   };
 
   const handleBack = () => {
@@ -33,11 +35,11 @@ const GenderScreen = ({ route }: { route: any }) => {
   };
 
   const handleSkip = () => {
-    const updatedUserData: UserData = {
+    const updatedUserData: User = {
       ...userData,
       gender: '',
     };
-    navigation.navigate('QuranConnectionScreen', { userData: updatedUserData });
+    navigation.navigate('QuranConnectionScreen', {userData: updatedUserData});
   };
 
   return (
@@ -56,7 +58,7 @@ const GenderScreen = ({ route }: { route: any }) => {
         {/* Progress Bar */}
         <View style={styles.progressContainer}>
           <View style={styles.progressBar}>
-            <View style={[styles.progress, { width: '27%' }]} />
+            <View style={[styles.progress, {width: '27%'}]} />
           </View>
         </View>
 
@@ -71,8 +73,7 @@ const GenderScreen = ({ route }: { route: any }) => {
                 styles.genderOption,
                 selectedGender === 'Male' && styles.selectedGenderOption,
               ]}
-              onPress={() => handleGenderSelect('Male')}
-            >
+              onPress={() => handleGenderSelect('Male')}>
               <View style={styles.genderIconContainer}>
                 <Image
                   source={require('../assets/images/male.png')}
@@ -84,8 +85,7 @@ const GenderScreen = ({ route }: { route: any }) => {
                 style={[
                   styles.genderText,
                   selectedGender === 'Male' && styles.selectedGenderText,
-                ]}
-              >
+                ]}>
                 Male
               </Text>
             </TouchableOpacity>
@@ -95,8 +95,7 @@ const GenderScreen = ({ route }: { route: any }) => {
                 styles.genderOption,
                 selectedGender === 'Female' && styles.selectedGenderOption,
               ]}
-              onPress={() => handleGenderSelect('Female')}
-            >
+              onPress={() => handleGenderSelect('Female')}>
               <View style={styles.genderIconContainer}>
                 <Image
                   source={require('../assets/images/female.png')}
@@ -108,8 +107,7 @@ const GenderScreen = ({ route }: { route: any }) => {
                 style={[
                   styles.genderText,
                   selectedGender === 'Female' && styles.selectedGenderText,
-                ]}
-              >
+                ]}>
                 Female
               </Text>
             </TouchableOpacity>
@@ -134,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    paddingHorizontal: 0,
+    paddingHorizontal: 10,
     marginTop: 20,
   },
   backButton: {
@@ -151,6 +149,7 @@ const styles = StyleSheet.create({
   progressContainer: {
     width: '100%',
     marginVertical: 20,
+    paddingHorizontal: 20,
   },
   progressBar: {
     height: 4,
@@ -166,23 +165,26 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-start',
     width: '100%',
+    paddingHorizontal: 20,
   },
   question: {
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
+    fontFamily: 'MontserratRegular',
   },
   subtitle: {
     color: 'white',
     fontSize: 16,
     marginBottom: 30,
+    fontFamily: 'MontserratRegular',
   },
   genderOptionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    paddingHorizontal: 10,
+    // paddingHorizontal: 10,
   },
   genderOption: {
     width: '45%',
@@ -199,9 +201,10 @@ const styles = StyleSheet.create({
   genderIconContainer: {
     width: 80,
     height: 80,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 10,
+    padding: 10,
   },
   genderIcon: {
     width: 60,
@@ -211,6 +214,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: '500',
+    fontFamily: 'MontserratRegular',
   },
   selectedGenderText: {
     color: '#0A333A',

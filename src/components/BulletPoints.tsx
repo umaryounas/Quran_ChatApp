@@ -1,16 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
 interface BulletPointProps {
   text: string;
-  iconSource?: any; 
+  iconSource?: any;
 }
 
-const BulletPoint = ({ text, iconSource }: BulletPointProps) => {
+const BulletPoint = ({text, iconSource}: BulletPointProps) => {
   return (
     <View style={styles.bulletContainer}>
       {iconSource ? (
-        <Image 
+        <Image
           source={iconSource}
           style={styles.bulletIcon}
           resizeMode="contain"
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     color: '#f4f4f5',
     fontSize: 14,
     fontWeight: '400',
+    fontFamily: 'MontserratRegular',
   },
 });
 

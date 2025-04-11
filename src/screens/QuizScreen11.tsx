@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,20 +9,43 @@ import {
   Platform,
   Image,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppDispatch} from '../store';
 import GradientBackground from '../components/GradientBackground';
-import {UserData} from '../types';
 import {NavigationProp} from '../types/navigation';
+import {setUser, createUser} from '../store/authSlice';
+import {RootState} from '../store';
 
 const QuizScreen11 = ({route}: {route: any}) => {
   const {width} = Dimensions.get('window');
   const {userData = {}} = route.params || {};
   const navigation = useNavigation<NavigationProp>();
+  const dispatch = useDispatch<AppDispatch>();
+  const {user, loading, error} = useSelector((state: RootState) => state.auth);
 
-  const handleContinue = () => {
-    console.log('Moving to next screen with data:', userData);
-    navigation.navigate('QuizScreen12', {userData});
+  // useEffect(() => {
+  //   // Check if user is already authenticated
+  //   const unsubscribe = auth.onAuthStateChanged(user => {
+  //     dispatch(setUser(user));
+  //   });
+
+  //   return () => unsubscribe();
+  // }, [dispatch]);
+
+  const handleContinue = async () => {
+    try {
+      // Replace with your actual email and password
+      console.log('Moving to next screen with data:', userData);
+      await dispatch(createUser(userData));
+      navigation.navigate('QuizScreen12', {userData});
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Authentication error:', error.message);
+      }
+    }
   };
 
   const handleBack = () => {
@@ -32,6 +55,14 @@ const QuizScreen11 = ({route}: {route: any}) => {
   const handleSkip = () => {
     navigation.navigate('QuizScreen12', {userData});
   };
+
+  if (loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#FFD700" />
+      </View>
+    );
+  }
 
   return (
     <GradientBackground>
@@ -62,7 +93,7 @@ const QuizScreen11 = ({route}: {route: any}) => {
             <View style={styles.securityContainer}>
               <View style={styles.imageContainer}>
                 <Image
-                  source={require('../assets/images/Lock.png')} // Replace with your image
+                  source={require('../assets/images/Lock.png')}
                   style={{width: width * 0.4, height: width * 0.4}}
                   resizeMode="contain"
                 />
@@ -74,14 +105,18 @@ const QuizScreen11 = ({route}: {route: any}) => {
                 Our promise ensures your data is fully anonymous and protected.
                 Your information is encrypted, confidential and never shared!
               </Text>
+              {error && <Text style={styles.errorText}>{error}</Text>}
             </View>
           </View>
 
           {/* Continue Button */}
           <TouchableOpacity
             style={styles.continueButton}
-            onPress={() => handleContinue()}>
-            <Text style={styles.continueButtonText}>Continue</Text>
+            onPress={handleContinue}
+            disabled={loading}>
+            <Text style={styles.continueButtonText}>
+              {loading ? 'Loading...' : 'Continue'}
+            </Text>
           </TouchableOpacity>
         </SafeAreaView>
       </KeyboardAvoidingView>
@@ -182,6 +217,17 @@ const styles = StyleSheet.create({
     color: '#0A333A',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#0A333A',
+  },
+  errorText: {
+    color: 'red',
+    textAlign: 'center',
+    marginTop: 10,
   },
 });
 

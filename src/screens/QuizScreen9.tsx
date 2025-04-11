@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,14 +8,16 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
+import {User} from '../data/models/domain/user';
 
-const QuizScreen9 = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
-  const [selectedOption, setSelectedOption] = useState<string>(userData.quranGoal || '');
+const QuizScreen9 = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
+  const [selectedOption, setSelectedOption] = useState<string>(
+    userData.quranGoal || '',
+  );
   const navigation = useNavigation<NavigationProp>();
 
   const options = [
@@ -37,13 +39,13 @@ const QuizScreen9 = ({ route }: { route: any }) => {
   ];
 
   const handleOptionSelect = (optionId: string) => {
-    const updatedUserData: UserData = {
+    const updatedUserData: User = {
       ...userData,
       quranGoal: optionId,
     };
 
     console.log('Updated onboarding data:', updatedUserData);
-    navigation.navigate('QuizScreen10', { userData: updatedUserData });
+    navigation.navigate('QuizScreen10', {userData: updatedUserData});
   };
 
   const handleBack = () => {
@@ -51,7 +53,7 @@ const QuizScreen9 = ({ route }: { route: any }) => {
   };
 
   const handleSkip = () => {
-    navigation.navigate('QuizScreen10', { userData });
+    navigation.navigate('QuizScreen10', {userData});
   };
 
   return (
@@ -59,8 +61,7 @@ const QuizScreen9 = ({ route }: { route: any }) => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
+        keyboardVerticalOffset={50}>
         <SafeAreaView style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
@@ -75,33 +76,34 @@ const QuizScreen9 = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '72%' }]} />
+              <View style={[styles.progress, {width: '72%'}]} />
             </View>
           </View>
 
           {/* Main Content */}
           <View style={styles.content}>
-            <Text style={styles.question}>What's your dream goal with the Qur'an?</Text>
+            <Text style={styles.question}>
+              What's your dream goal with the Qur'an?
+            </Text>
 
             <View style={styles.optionsContainer}>
-              {options.map((option) => (
+              {options.map(option => (
                 <TouchableOpacity
                   key={option.id}
                   style={[
                     styles.option,
                     selectedOption === option.id && styles.selectedOption,
                   ]}
-                  onPress={() => handleOptionSelect(option.id)}
-                >
+                  onPress={() => handleOptionSelect(option.id)}>
                   <View style={styles.optionContent}>
                     <Text style={styles.optionIcon}>{option.icon}</Text>
                     <View style={styles.optionTextContainer}>
                       <Text
                         style={[
                           styles.optionText,
-                          selectedOption === option.id && styles.selectedOptionText,
-                        ]}
-                      >
+                          selectedOption === option.id &&
+                            styles.selectedOptionText,
+                        ]}>
                         <Text style={styles.boldText}>{option.text}</Text>
                       </Text>
                     </View>

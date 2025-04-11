@@ -1,45 +1,52 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Dimensions, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  Dimensions,
+  Image,
+} from 'react-native';
 import GradientBackground from '../components/GradientBackground';
 import PrimaryButton from '../components/Button';
 import Header from '../components/Header';
 import ContentContainer from '../components/ContentContainer';
 import ProgressSteps from '../components/ProgressBar';
-import { useNavigation } from '@react-navigation/native';
-import { NavigationProp } from '../types/navigation';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '../types/navigation';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const TransitionScreen2 = () => {
   const navigation = useNavigation<NavigationProp>();
-  
+
   return (
     <GradientBackground>
       <StatusBar backgroundColor="#0A333A" barStyle="light-content" />
-      
+
       <View style={styles.progressContainer}>
         <ProgressSteps currentStep={2} totalSteps={5} />
       </View>
-      
+
       <ContentContainer>
         {/* Main content area */}
         <View style={styles.contentArea}>
           <View style={styles.imageContainer}>
-              <Image 
-              source={require('../assets/images/mosque.png')} 
-              style={{ width: width * 0.8, height: width * 0.8 }} 
-              />
-  
+            <Image
+              source={require('../assets/images/mosque.png')}
+              style={{width: width * 0.8, height: width * 0.8}}
+            />
           </View>
-          
+
           <Header title="Not Everything We Believe is Right..." />
-          
+
           <Text style={styles.descriptionText}>
-            Let go of doubts and false beliefs. QuranChat will help you uncover the truth with authentic sources.
+            Let go of doubts and false beliefs. QuranChat will help you uncover
+            the truth with authentic sources.
           </Text>
         </View>
       </ContentContainer>
-      
+
       <View style={styles.bottomContainer}>
         <PrimaryButton
           title="Uncover the Truth"
@@ -74,6 +81,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: 20,
     marginTop: 10,
+    fontFamily: 'MontserratRegular',
   },
   bottomContainer: {
     width: width,

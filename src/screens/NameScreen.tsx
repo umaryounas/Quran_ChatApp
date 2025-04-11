@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,25 +10,23 @@ import {
   Platform,
   Dimensions,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
+import {UserDto} from '../data/models/dtos/auth-dto';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-const NameScreen = () => {
+const NameScreen = ({route}: {route: any}) => {
   const [firstName, setFirstName] = useState('');
   const [error, setError] = useState('');
   const navigation = useNavigation<NavigationProp>();
 
   const handleContinue = () => {
     if (!firstName.trim()) {
-      setError('Please enter your first name');
       return;
     }
-
-    const userData: UserData = {
+    const userData: UserDto = {
       firstName: firstName.trim(),
       age: null,
       gender: '',
@@ -38,12 +36,16 @@ const NameScreen = () => {
       guidanceFrequency: '',
       consistencyLevel: '',
     };
-
-    navigation.navigate('AgeScreen', { userData });
+    navigation.navigate('EmailScreen', {
+      userData: {
+        ...userData,
+        firstName: firstName.trim(),
+      },
+    });
   };
 
   const handleSkip = () => {
-    const userData: UserData = {
+    const userData: UserDto = {
       firstName: firstName.trim(),
       age: null,
       gender: '',
@@ -53,7 +55,7 @@ const NameScreen = () => {
       guidanceFrequency: '',
       consistencyLevel: '',
     };
-    navigation.navigate('AgeScreen', { userData });
+    navigation.navigate('AgeScreen', {userData});
   };
 
   return (
@@ -61,12 +63,13 @@ const NameScreen = () => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
+        keyboardVerticalOffset={50}>
         <SafeAreaView style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={styles.backButton}>
               <Text style={styles.backButtonText}>←</Text> {/* Arrow symbol */}
             </TouchableOpacity>
             <TouchableOpacity onPress={handleSkip}>
@@ -77,21 +80,23 @@ const NameScreen = () => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '9%' }]} />
+              <View style={[styles.progress, {width: '9%'}]} />
             </View>
           </View>
 
           {/* Main Content */}
           <View style={styles.content}>
             <Text style={styles.question}>What's your first name?</Text>
-            <Text style={styles.subtitle}>Enter your first name for username.</Text>
+            <Text style={styles.subtitle}>
+              Enter your first name for username.
+            </Text>
 
             <View style={styles.inputContainer}>
               <Text style={styles.inputLabel}>First Name</Text>
               <TextInput
                 style={styles.input}
                 value={firstName}
-                onChangeText={(text) => {
+                onChangeText={text => {
                   setFirstName(text);
                   if (error) setError('');
                 }}
@@ -103,7 +108,9 @@ const NameScreen = () => {
           </View>
 
           {/* Continue Button */}
-          <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
+          <TouchableOpacity
+            style={styles.continueButton}
+            onPress={handleContinue}>
             <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
         </SafeAreaView>
@@ -122,11 +129,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    paddingHorizontal: 0,
+    paddingHorizontal: 10,
     marginTop: 20, // Added margin for spacing
   },
   backButton: {
-    padding: 0,
+    padding: 10,
   },
   backButtonText: {
     color: 'white',
@@ -141,6 +148,7 @@ const styles = StyleSheet.create({
   progressContainer: {
     width: '100%',
     marginVertical: 20,
+    paddingHorizontal: 20,
   },
   progressBar: {
     height: 4,
@@ -155,18 +163,21 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     alignItems: 'flex-start',
-    width: '100%',
+    paddingHorizontal: 20,
+    marginTop: 40,
   },
   question: {
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
     marginBottom: 8,
+    fontFamily: 'MontserratBold',
   },
   subtitle: {
     color: 'white',
     fontSize: 16,
     marginBottom: 30,
+    fontFamily: 'MontserratRegular',
   },
   inputContainer: {
     width: '100%',
@@ -175,6 +186,7 @@ const styles = StyleSheet.create({
   inputLabel: {
     color: 'white',
     marginBottom: 8,
+    fontFamily: 'MontserratRegular',
   },
   input: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -183,6 +195,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 16,
     width: '100%',
+    fontFamily: 'MontserratRegular',
   },
   errorText: {
     color: '#FF6B6B',
@@ -190,16 +203,18 @@ const styles = StyleSheet.create({
   },
   continueButton: {
     backgroundColor: '#FFD700',
-    width: '100%',
+    width: '90%',
     padding: 16,
     borderRadius: 50,
     alignItems: 'center',
     marginBottom: 20,
+    alignSelf: 'center',
   },
   continueButtonText: {
     color: '#0A333A',
     fontWeight: 'bold',
     fontSize: 16,
+    fontFamily: 'MontserratRegular',
   },
 });
 
