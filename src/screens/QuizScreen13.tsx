@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
 import { NavigationProp } from '../types/navigation';
 const { width } = Dimensions.get('window');
 
@@ -21,7 +20,11 @@ const QuizScreen13 = ({ route }: { route: any }) => {
    
   const { userData = {} } = route.params || {};
   const navigation = useNavigation<NavigationProp>();
-  const userName = userData.name || 'Ahmed';
+  const age = userData?.age || 0;
+  const average = (age * 100) / 65;
+  const percentage = Math.round(average);
+  const percentageText = percentage > 100 ? '100%' : `${percentage}%`;
+  const userName = userData?.firstName || 'Ahmed';
 
   const handleStart = () => {
     console.log('Starting main app with user data:', userData);
@@ -55,7 +58,7 @@ const QuizScreen13 = ({ route }: { route: any }) => {
             <Text style={styles.welcomeTitle}>One last thing, {userName}...</Text>
             
             <Text style={styles.welcomeText}>
-            Did you know that if the average lifespan is around 65, you’ve already lived 40% of your life?
+            Did you know that if the average lifespan is around 65, you’ve already lived {percentageText} of your life?
             </Text>
           </View>
 

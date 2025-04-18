@@ -17,8 +17,9 @@ const width = Dimensions.get('window').width;
 
 const Awareness6Screen = () => {
   const navigation = useNavigation<NavigationProp>();
+  
   const handleNext = () => {
-    navigation.navigate('ChatWelcomeScreen');
+    navigation.navigate('JoinThousandsScreen');
   };
 
   return (
@@ -27,35 +28,35 @@ const Awareness6Screen = () => {
       
       <View style={styles.imageContainer}>
         <Image 
-          source={require('../assets/images/awareness6.png')} 
-          style={styles.image} 
-          resizeMode="contain" 
+          source={require('../assets/images/awareness6.png')}
+          style={styles.image}
+          resizeMode="contain"
         />
       </View>
       
       <Text style={styles.title}>
-        Begin your journey to spiritual transformation today
+        A strong faith gives you confidence in every step of life.
       </Text>
       
       <View style={styles.checklistContainer}>
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Join thousands who have revitalized their faith
+            Overcome doubts and feel secure in your path to Jannah.
           </Text>
         </View>
         
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Access guided practices that grow with your spiritual journey
+            Gain the strength to handle life's challenges with ease.
           </Text>
         </View>
         
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Experience the peace of mind that comes with authentic worship
+            Live every day with purpose, knowing you're on the right track.
           </Text>
         </View>
       </View>
@@ -67,7 +68,7 @@ const Awareness6Screen = () => {
       </View>
       
       <TouchableOpacity style={styles.button} onPress={handleNext}>
-        <Text style={styles.buttonText}>Start My Journey</Text>
+        <Text style={styles.buttonText}>Yes I want</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -87,14 +88,14 @@ const styles = StyleSheet.create({
     height: '35%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   image: {
-    width: width * 0.8,
-    height: width * 0.8,
+    width: width * 0.7,
+    height: width * 0.7,
   },
   title: {
-    marginTop: 20,
+    marginTop: 30,
     fontSize: 20,
     fontWeight: '600',
     color: 'white',
@@ -119,11 +120,11 @@ const styles = StyleSheet.create({
   checkText: {
     color: '#e4e4e7',
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '400',
     flex: 1,
   },
   dotsContainer: {
-    marginTop: 130,
+    marginTop: 170,
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 20,
@@ -148,13 +149,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     marginBottom: 20,
-    // marginTop: 5,
   },
   buttonText: {
     color: 'black',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
+
 
 export default Awareness6Screen;

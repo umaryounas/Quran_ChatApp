@@ -50,7 +50,7 @@ const Awareness2Screen = () => {
       </View>
       
       <View style={styles.warningContainer}>
-        <Ionicons name="close" size={24} color="#FFD700" style={styles.warningIcon} />
+        <Ionicons name="close" size={30} color="#FFD700" style={styles.warningIcon} />
         <Text style={styles.warningText}>
           A neglected Qur'an leads to a neglected soul.
         </Text>
@@ -121,14 +121,15 @@ const styles = StyleSheet.create({
   },
   statContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 25,
-
+    paddingHorizontal: 15,
     marginBottom: 15,
     width: '100%',
-    alignItems: 'flex-start',
+    alignItems: 'center', 
   },
   statIcon: {
     marginRight: 10,
+    marginTop: 2, 
+    
   },
   statText: {
     color: '#e4e4e7',
@@ -137,13 +138,14 @@ const styles = StyleSheet.create({
   },
   warningContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
     marginBottom: 15,
     width: '100%',
-    alignItems: 'flex-start',
+    alignItems: 'center', // Changed to center
   },
   warningIcon: {
     marginRight: 10,
+    marginTop: 2, // Added to match
   },
   warningText: {
     color: '#e4e4e7',

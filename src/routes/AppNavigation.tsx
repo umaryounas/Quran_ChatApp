@@ -109,6 +109,14 @@ const AuthNavigator = () => {
       <AuthStack.Screen name="QuizScreen12" component={QuizScreen12} />
       <AuthStack.Screen name="QuizScreen13" component={QuizScreen13} />
       <AuthStack.Screen name="QuizScreen14" component={QuizScreen14} />
+      <AuthStack.Screen name="CreatePinScreen" component={CreatePinScreen} />
+      <AuthStack.Screen name="PinSuccessScreen" component={PinSuccessScreen} />
+      <AuthStack.Screen name="Awareness1Screen" component={Awareness1Screen} />
+      <AuthStack.Screen name="Awareness2Screen" component={Awareness2Screen} />
+      <AuthStack.Screen name="Awareness3Screen" component={Awareness3Screen} />
+      <AuthStack.Screen name="Awareness4Screen" component={Awareness4Screen} />
+      <AuthStack.Screen name="Awareness5Screen" component={Awareness5Screen} />
+      <AuthStack.Screen name="Awareness6Screen" component={Awareness6Screen} />
       <AuthStack.Screen
         name="JoinThousandsScreen"
         component={JoinThousandsScreen}
@@ -173,14 +181,6 @@ const MainNavigator = () => {
         name="AppLockMainScreen"
         component={AppLockMainScreen}
       />
-      <MainStack.Screen name="CreatePinScreen" component={CreatePinScreen} />
-      <MainStack.Screen name="PinSuccessScreen" component={PinSuccessScreen} />
-      <MainStack.Screen name="Awareness1Screen" component={Awareness1Screen} />
-      <MainStack.Screen name="Awareness2Screen" component={Awareness2Screen} />
-      <MainStack.Screen name="Awareness3Screen" component={Awareness3Screen} />
-      <MainStack.Screen name="Awareness4Screen" component={Awareness4Screen} />
-      <MainStack.Screen name="Awareness5Screen" component={Awareness5Screen} />
-      <MainStack.Screen name="Awareness6Screen" component={Awareness6Screen} />
     </MainStack.Navigator>
   );
 };

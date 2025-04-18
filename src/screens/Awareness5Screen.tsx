@@ -17,6 +17,7 @@ const width = Dimensions.get('window').width;
 
 const Awareness5Screen = () => {
   const navigation = useNavigation<NavigationProp>();
+  
   const handleNext = () => {
     navigation.navigate('Awareness6Screen');
   };
@@ -27,35 +28,35 @@ const Awareness5Screen = () => {
       
       <View style={styles.imageContainer}>
         <Image 
-          source={require('../assets/images/awareness5.png')} 
-          style={styles.image} 
-          resizeMode="contain" 
+          source={require('../assets/images/awareness5.png')}
+          style={styles.image}
+          resizeMode="contain"
         />
       </View>
       
       <Text style={styles.title}>
-        Rediscover the miracle of the Qur'an in your life
+        The Qur'an isn't just a book—it's the key to a peaceful heart.
       </Text>
       
       <View style={styles.checklistContainer}>
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Understand the deeper meanings behind each verse
+            Wake up feeling lighter, knowing your soul is nourished.
           </Text>
         </View>
         
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Find guidance that applies directly to your daily challenges
+            Replace anxiety with trust—find answers when you need them most.
           </Text>
         </View>
         
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Feel the comfort and clarity that comes from regular recitation
+            Strengthen your bond with Allah and feel His presence daily.
           </Text>
         </View>
       </View>
@@ -67,7 +68,7 @@ const Awareness5Screen = () => {
       </View>
       
       <TouchableOpacity style={styles.button} onPress={handleNext}>
-        <Text style={styles.buttonText}>Continue</Text>
+        <Text style={styles.buttonText}>Yes I want</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -87,14 +88,14 @@ const styles = StyleSheet.create({
     height: '35%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   image: {
-    width: width * 0.8,
-    height: width * 0.8,
+    width: width * 0.7,
+    height: width * 0.7,
   },
   title: {
-    marginTop: 20,
+    marginTop: 30,
     fontSize: 20,
     fontWeight: '600',
     color: 'white',
@@ -119,11 +120,11 @@ const styles = StyleSheet.create({
   checkText: {
     color: '#e4e4e7',
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '400',
     flex: 1,
   },
   dotsContainer: {
-    marginTop: 130,
+    marginTop: 170,
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 20,
@@ -148,11 +149,10 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     marginBottom: 20,
-    // marginTop: 20,
   },
   buttonText: {
     color: 'black',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });

@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   ratingContainer: {
-    marginTop: 20,
+    marginTop: 50,
     width: width,
     alignItems: 'center',
     justifyContent: 'center',
@@ -157,13 +157,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 15,
   },
   subtitle: {
     color: 'white',
     fontSize: 14,
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 30,
     opacity: 0.9,
   },
   testimonialsList: {
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
     padding: 16,
-    marginBottom: 16,
+    marginBottom: 25,
   },
   testimonialHeader: {
     flexDirection: 'row',

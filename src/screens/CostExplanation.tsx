@@ -43,8 +43,10 @@ const CostExplanationScreen = () => {
                 />
               </View>
               <View style={styles.costTextContainer}>
-                <Text style={styles.costCardTitle}>AI Computation Costs -</Text>
-                <Text style={styles.costCardDesc}>Every chat you have with Qur'anChat requires advanced AI processing.</Text>
+                <Text>
+                  <Text style={styles.costCardTitle}>AI Computation Costs - </Text>
+                  <Text style={styles.costCardDesc}>Every chat you have with Qur'anChat requires advanced AI processing.</Text>
+                </Text>
               </View>
             </View>
 
@@ -106,12 +108,12 @@ const styles = StyleSheet.create({
   },
   costHeaderContainer: {
     alignItems: 'center',
-    marginTop: 80,
+    marginTop: 100,
     marginBottom: 30,
   },
   quranIcon: {
-    width: 70,
-    height: 70,
+    width: 80,
+    height: 80,
     resizeMode: 'contain',
   },
   costTitle: {
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 15,
   },
   costSubtitle: {
     color: 'white',
@@ -130,13 +132,14 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   costCardsContainer: {
-    width: '100%',
+    width: '95%',
   },
   costCard: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
-    padding: 15,
-    marginBottom: 15,
+    paddingVertical: 25,
+    paddingHorizontal: 15,
+    marginBottom: 25,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -150,16 +153,21 @@ const styles = StyleSheet.create({
   },
   costTextContainer: {
     flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'baseline', // Align text baselines for better appearance
   },
   costCardTitle: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+    marginRight: 4, // Space between title and description
   },
   costCardDesc: {
     color: 'white',
     opacity: 0.9,
     fontSize: 14,
+    flex: 0, // Remove flex: 1 to prevent forcing a new line
   },
   footer: {
     width: '100%',

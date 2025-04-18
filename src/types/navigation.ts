@@ -1,3 +1,5 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 export type RootStackParamList = {
   WelcomeScreen: undefined;
   TransitionScreen1: undefined;
@@ -7,6 +9,12 @@ export type RootStackParamList = {
   PasswordScreen: {userData: UserData};
   AgeScreen: {userData: UserData};
   // ... other screens ...
+  Awareness1Screen: undefined;
+    Awareness2Screen: undefined;
+    Awareness3Screen: undefined;
+    Awareness4Screen: undefined;
+    Awareness5Screen: undefined;
+    Awareness6Screen: undefined;
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;

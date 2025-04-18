@@ -17,6 +17,7 @@ const width = Dimensions.get('window').width;
 
 const Awareness4Screen = () => {
   const navigation = useNavigation<NavigationProp>();
+  
   const handleNext = () => {
     navigation.navigate('Awareness5Screen');
   };
@@ -27,35 +28,35 @@ const Awareness4Screen = () => {
       
       <View style={styles.imageContainer}>
         <Image 
-          source={require('../assets/images/awareness4.png')} 
-          style={styles.image} 
-          resizeMode="contain" 
+          source={require('../assets/images/awareness4.png')}
+          style={styles.image}
+          resizeMode="contain"
         />
       </View>
       
       <Text style={styles.title}>
-        Turn your daily prayers into moments of true connection
+        Imagine praying with full presence, no distractions—just you and Allah.
       </Text>
       
       <View style={styles.checklistContainer}>
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Develop mindfulness that carries throughout your day
+            Feel completely at peace the moment you say 'Allahu Akbar'.
           </Text>
         </View>
         
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Experience peace and tranquility in every prostration
+            Eliminate distractions and connect deeply in your prayer.
           </Text>
         </View>
         
         <View style={styles.checkItem}>
-          <Ionicons name="checkmark-circle" size={24} color="#6BB577" style={styles.checkIcon} />
+        <Ionicons name="checkbox" size={24} color="#6BB577" style={styles.checkIcon} />
           <Text style={styles.checkText}>
-            Build a relationship with Allah that grows stronger daily
+            Transform Salah into a source of strength and clarity.
           </Text>
         </View>
       </View>
@@ -67,12 +68,11 @@ const Awareness4Screen = () => {
       </View>
       
       <TouchableOpacity style={styles.button} onPress={handleNext}>
-        <Text style={styles.buttonText}>Continue</Text>
+        <Text style={styles.buttonText}>Yes I want</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -83,18 +83,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   imageContainer: {
-    marginTop: 43,
+    marginTop: 30,
     height: '35%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   image: {
-    width: width * 0.8,
-    height: width * 0.8,
+    width: width * 0.7,
+    height: width * 0.7,
   },
   title: {
-    marginTop: 20,
+    marginTop: 30,
     fontSize: 20,
     fontWeight: '600',
     color: 'white',
@@ -119,11 +119,11 @@ const styles = StyleSheet.create({
   checkText: {
     color: '#e4e4e7',
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '400',
     flex: 1,
   },
   dotsContainer: {
-    marginTop: 122,
+    marginTop: 170,
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 20,
@@ -148,13 +148,11 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     marginBottom: 20,
-    // marginTop: 20,
   },
   buttonText: {
     color: 'black',
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
-
 export default Awareness4Screen;

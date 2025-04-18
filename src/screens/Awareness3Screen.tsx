@@ -51,7 +51,7 @@ const Awareness3Screen = () => {
       </View>
       
       <View style={styles.warningContainer}>
-        <Ionicons name="close" size={24} color="#FFD700" style={styles.warningIcon} />
+      <Ionicons name="close" size={30} color="#FFD700" style={styles.warningIcon} />
         <Text style={styles.warningText}>
           Weak Iman = Weak conviction. Until sin feels normal.
         </Text>
@@ -144,12 +144,17 @@ const styles = StyleSheet.create({
   },
   warningIcon: {
     marginRight: 10,
+    alignSelf: 'flex-start',
+    marginTop: 2, // This helps vertically align the icon with the text
   },
   warningText: {
+    marginTop: 4,
     color: '#e4e4e7',
+    marginLeft: -4,
     fontSize: 13,
     fontWeight: '500',
-    marginRight: 10,
+    marginRight: 15,
+    lineHeight: 22, // Helps with vertical alignment with the icon
   },
   dotsContainer: {
     marginTop: 150,

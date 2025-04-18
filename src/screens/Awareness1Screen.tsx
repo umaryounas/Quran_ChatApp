@@ -64,7 +64,7 @@ const Awareness1Screen = () => {
       <View style={styles.warningContainer}>
         <Ionicons
           name="close"
-          size={24}
+          size={30}
           color="#FFD700"
           style={styles.warningIcon}
         />
@@ -141,10 +141,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginBottom: 15,
     width: '100%',
-    alignItems: 'flex-start',
+    alignItems: 'center', 
   },
   statIcon: {
     marginRight: 10,
+    marginTop: 2, 
+    
   },
   statText: {
     color: '#e4e4e7',
@@ -156,10 +158,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginBottom: 15,
     width: '100%',
-    alignItems: 'flex-start',
+    alignItems: 'center', // Changed to center
   },
   warningIcon: {
     marginRight: 10,
+    marginTop: 2, // Added to match
   },
   warningText: {
     color: '#e4e4e7',

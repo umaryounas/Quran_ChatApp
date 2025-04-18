@@ -7,9 +7,9 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import {NavigationProp} from '../types/navigation';
+import { NavigationProp } from '../types/navigation';
 
 const JourneyScreen = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -80,12 +80,14 @@ const JourneyScreen = () => {
 
           <View style={styles.planContainer}>
             <View style={styles.planRow}>
-              <View style={styles.planCard}>
+              <View style={[styles.planCard]}>
                 <View style={styles.radioCircle}>
-                  <View style={styles.radioInner} />
+                  {/* Empty - not selected */}
                 </View>
-                <Text style={styles.planTitle}>Monthly Plan</Text>
-                <Text style={styles.planPrice}>$14.99/month</Text>
+                <View style={styles.planTextContainer}>
+                  <Text style={styles.planTitle}>Monthly Plan</Text>
+                  <Text style={styles.planPrice}>$14.99/month</Text>
+                </View>
               </View>
 
               <View style={[styles.planCard, styles.selectedPlan]}>
@@ -95,8 +97,10 @@ const JourneyScreen = () => {
                 <View style={styles.radioCircle}>
                   <View style={styles.radioInner} />
                 </View>
-                <Text style={styles.planTitle}>Yearly Plan</Text>
-                <Text style={styles.planPrice}>$4/month</Text>
+                <View style={styles.planTextContainer}>
+                  <Text style={styles.planTitle}>Yearly Plan</Text>
+                  <Text style={styles.planPrice}>$4/month</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -152,7 +156,7 @@ const styles = StyleSheet.create({
   },
   journeyHeaderContainer: {
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 40,
     marginBottom: 15,
   },
   journeyLogo: {
@@ -177,12 +181,12 @@ const styles = StyleSheet.create({
   },
   benefitsContainer: {
     width: '100%',
-    marginBottom: 25,
+    marginBottom: 150,
   },
   benefitRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 15,
+    marginBottom: 5,
   },
   benefitIcon: {
     width: 50,
@@ -202,7 +206,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     marginBottom: 20,
-    marginLeft: 25,
+    marginLeft: 0, // Remove left margin
   },
   planContainer: {
     width: '100%',
@@ -217,21 +221,25 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 15,
     width: '48%',
-    alignItems: 'center',
+    flexDirection: 'row', // Change to row layout
+    alignItems: 'center', // Align items vertically centered
     position: 'relative',
   },
   selectedPlan: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', // Slightly brighter
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
     borderRadius: 12,
     padding: 15,
     width: '48%',
     alignItems: 'center',
     position: 'relative',
   },
+
   discountBadge: {
     position: 'absolute',
-    top: -10,
-    right: -10,
+    top: -8,
+    right: -8,
     backgroundColor: '#FFFFFF',
     borderRadius: 15,
     paddingVertical: 3,
@@ -242,6 +250,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 12,
   },
+  planTextContainer: {
+    flexDirection: 'column',
+  },
   radioCircle: {
     width: 20,
     height: 20,
@@ -250,7 +261,8 @@ const styles = StyleSheet.create({
     borderColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    marginRight: 10, // Add right margin instead of bottom margin
+    marginBottom: 0, // Remove bottom margin
   },
   radioInner: {
     width: 10,

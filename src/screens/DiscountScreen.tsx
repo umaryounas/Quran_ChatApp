@@ -68,8 +68,8 @@ const DiscountScreen = () => {
 
           <View style={styles.footer}>
             <TouchableOpacity
-              style={styles.claimButton}
-              onPress={() => navigation.navigate('Awareness1Screen')}>
+              style={styles.claimButton}>
+              {/* // onPress={() => navigation.navigate('Awareness1Screen')}> */}
               <Text style={styles.claimButtonText}>Claim your offer now</Text>
             </TouchableOpacity>
 
@@ -139,8 +139,8 @@ const styles = StyleSheet.create({
   },
   discountBadgeContainer: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 15,
-    padding: 20,
+    borderRadius: 10,
+    padding: 30,
     alignItems: 'center',
     width: '50%',
     marginBottom: 20,
