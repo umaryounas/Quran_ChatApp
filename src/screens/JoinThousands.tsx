@@ -9,11 +9,11 @@ import {
   FlatList,
   Dimensions,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const JoinThousandsScreen = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -39,7 +39,8 @@ const JoinThousandsScreen = () => {
       id: '3',
       name: 'Musa',
       location: 'Canada',
-      quote: '"I struggled with focus in Salah. Qur\'an Chat gave me the tools to change that"',
+      quote:
+        '"I struggled with focus in Salah. Qur\'an Chat gave me the tools to change that"',
       rating: 5,
       avatar: require('../assets/images/img3.jpeg'),
     },
@@ -55,10 +56,10 @@ const JoinThousandsScreen = () => {
     location: string;
     quote: string;
     rating: number;
-    avatar: any; 
+    avatar: any;
   }
-  
-  const renderTestimonial = ({ item }: { item: Testimonial }) => (
+
+  const renderTestimonial = ({item}: {item: Testimonial}) => (
     <View style={styles.testimonialCard}>
       <View style={styles.testimonialHeader}>
         <Image source={item.avatar} style={styles.avatar} />
@@ -67,9 +68,13 @@ const JoinThousandsScreen = () => {
           <Text style={styles.testimonialLocation}>{item.location}</Text>
         </View>
         <View style={styles.ratingContain}>
-          {Array(5).fill(0).map((_, i) => (
-            <Text key={i} style={styles.starIcon}>★</Text>
-          ))}
+          {Array(5)
+            .fill(0)
+            .map((_, i) => (
+              <Text key={i} style={styles.starIcon}>
+                ★
+              </Text>
+            ))}
         </View>
       </View>
       <Text style={styles.testimonialQuote}>{item.quote}</Text>
@@ -81,32 +86,39 @@ const JoinThousandsScreen = () => {
       <SafeAreaView style={styles.container}>
         <View style={styles.content}>
           <View style={styles.ratingContainer}>
-                    <Image 
-                      source={require('../assets/images/stars.png')} 
-                      style={styles.starsWingsImage} 
-                      resizeMode="contain"
-                    />
-                  </View>
+            <Image
+              source={require('../assets/images/stars.png')}
+              style={styles.starsWingsImage}
+              resizeMode="contain"
+            />
+          </View>
 
-          <Text style={styles.title}>Join Thousands Who Are Transforming Their Faith</Text>
-          <Text style={styles.subtitle}>
-            Thousands of Muslims around the world are already using AI to deepen their connection with the Qur'an. Here's what they say
-          </Text>
+          <View style={styles.headerTextContainer}>
+            <Text style={styles.title}>
+              Join Thousands Who Are Transforming Their Faith
+            </Text>
+            <Text style={styles.subtitle}>
+              Thousands of Muslims around the world are already using AI to
+              deepen their connection with the Qur'an. Here's what they say
+            </Text>
+          </View>
 
           <FlatList
             data={testimonials}
             renderItem={renderTestimonial}
             keyExtractor={item => item.id}
             style={styles.testimonialsList}
+            contentContainerStyle={styles.testimonialsContentContainer}
             showsVerticalScrollIndicator={false}
           />
 
           <View style={styles.footer}>
-            <Text style={styles.footerText}>Users say they feel more connected to the Qur'an in just 7 days</Text>
+            <Text style={styles.footerText}>
+              Users say they feel more connected to the Qur'an in just 7 days
+            </Text>
             <TouchableOpacity style={styles.joinButton} onPress={handleJoin}>
               <Text style={styles.joinButtonText}>I Want to Join Them</Text>
             </TouchableOpacity>
-            
           </View>
         </View>
       </SafeAreaView>
@@ -123,32 +135,22 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     width: '100%',
+    paddingBottom: 20,
   },
-//   headerContainer: {
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     marginTop: 20,
-//     marginBottom: 10,
-//   },
-  wingLeft: {
-    width: 40,
-    height: 30,
-    resizeMode: 'contain',
+  headerTextContainer: {
+    paddingHorizontal: 24,
+    width: '100%',
   },
-  wingRight: {
-    width: 40,
-    height: 30,
-    resizeMode: 'contain',
+  ratingContainer: {
+    marginTop: 20,
+    width: width,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 0,
   },
-  starsContainer: {
-    flexDirection: 'row',
-    marginHorizontal: 10,
-  },
-  starIcon: {
-    color: '#FFD700',
-    fontSize: 18,
-    marginHorizontal: 2,
+  starsWingsImage: {
+    width: width * 0.8,
+    height: width * 0.3,
   },
   title: {
     color: 'white',
@@ -166,24 +168,17 @@ const styles = StyleSheet.create({
   },
   testimonialsList: {
     width: '100%',
-    marginBottom: 20,
+    flex: 1,
   },
-  ratingContainer: {
-    marginTop: 20,
-    width: width,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 0,
-  },
-  starsWingsImage: {
-    width: width * 0.8,
-    height: width * 0.3,
+  testimonialsContentContainer: {
+    paddingHorizontal: 24,
+    paddingTop: 10,
   },
   testimonialCard: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
-    padding: 10,
-    marginBottom: 25,
+    padding: 16,
+    marginBottom: 16,
   },
   testimonialHeader: {
     flexDirection: 'row',
@@ -212,6 +207,11 @@ const styles = StyleSheet.create({
   ratingContain: {
     flexDirection: 'row',
   },
+  starIcon: {
+    color: '#FFD700',
+    fontSize: 18,
+    marginHorizontal: 2,
+  },
   testimonialQuote: {
     color: '#F4F4F5',
     fontSize: 14,
@@ -220,45 +220,27 @@ const styles = StyleSheet.create({
   footer: {
     width: '100%',
     alignItems: 'center',
-    marginTop: 'auto',
-    marginBottom: 20,
-    paddingHorizontal: 20,
+    marginTop: 20,
+    paddingHorizontal: 24,
   },
   footerText: {
     color: '#e4e4e7',
-    fontSize: 10,
+    fontSize: 12,
     textAlign: 'center',
     marginBottom: 15,
   },
   joinButton: {
-    marginTop: 15,
     backgroundColor: '#FFD700',
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderRadius: 25,
     width: '100%',
     alignItems: 'center',
-    
   },
   joinButtonText: {
     color: '#0A333A',
     fontSize: 16,
     fontWeight: 'bold',
-  },
-  progressDots: {
-    flexDirection: 'row',
-    marginTop: 15,
-  },
-  dot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    marginHorizontal: 5,
-  },
-  activeDot: {
-    backgroundColor: 'white',
-    width: 20,
   },
 });
 

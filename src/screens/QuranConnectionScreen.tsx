@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,14 +8,16 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {UserData} from '../types';
+import {NavigationProp} from '../types/navigation';
 
-const QuranConnectionScreen = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
-  const [selectedConnection, setSelectedConnection] = useState<string>(userData.quranConnection || '');
+const QuranConnectionScreen = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
+  const [selectedConnection, setSelectedConnection] = useState<string>(
+    userData.quranConnection || '',
+  );
   const navigation = useNavigation<NavigationProp>();
 
   const connectionOptions = [
@@ -33,8 +35,8 @@ const QuranConnectionScreen = ({ route }: { route: any }) => {
     },
     {
       id: 'not',
-      text: 'Not as much as I\'d like',
-      description: ' - but I\'m ready to change that.',
+      text: "Not as much as I'd like",
+      description: " - but I'm ready to change that.",
       icon: '🚀',
     },
   ];
@@ -44,9 +46,8 @@ const QuranConnectionScreen = ({ route }: { route: any }) => {
       ...userData,
       quranConnection: optionId,
     };
-
     console.log('Completed onboarding with data:', finalUserData);
-    navigation.navigate('QuizScreen6', { userData: finalUserData });
+    navigation.navigate('QuizScreen6', {userData: finalUserData});
   };
 
   const handleBack = () => {
@@ -58,22 +59,20 @@ const QuranConnectionScreen = ({ route }: { route: any }) => {
       ...userData,
       quranConnection: '',
     };
-
     console.log('Completed onboarding with data:', finalUserData);
-    navigation.navigate('QuizScreen6', { userData: finalUserData });
+    navigation.navigate('QuizScreen6', {userData: finalUserData});
   };
 
   return (
     <GradientBackground>
       <KeyboardAvoidingView
-        style={styles.container}
+        style={styles.keyboardAvoid}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
-        <SafeAreaView style={styles.container}>
+        keyboardVerticalOffset={50}>
+        <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+            <TouchableOpacity onPress={handleBack}>
               <Text style={styles.backButtonText}>←</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleSkip}>
@@ -84,34 +83,35 @@ const QuranConnectionScreen = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '36%' }]} />
+              <View style={[styles.progress, {width: '36%'}]} />
             </View>
           </View>
 
           {/* Main Content */}
           <View style={styles.content}>
-            <Text style={styles.question}>How connected do you feel to the Qur'an right now?</Text>
+            <Text style={styles.question}>
+              How connected do you feel to the Qur'an right now?
+            </Text>
 
             <View style={styles.optionsContainer}>
-              {connectionOptions.map((option) => (
+              {connectionOptions.map(option => (
                 <TouchableOpacity
                   key={option.id}
                   style={[
-                    styles.connectionOption,
-                    selectedConnection === option.id && styles.selectedOption,
+                    styles.optionCard,
+                    selectedConnection === option.id && styles.optionSelected,
                   ]}
-                  onPress={() => handleOptionSelect(option.id)} // Navigate on option select
-                >
-                  <View style={styles.optionContent}>
+                  onPress={() => handleOptionSelect(option.id)}>
+                  <View style={styles.optionRow}>
                     <Text style={styles.optionIcon}>{option.icon}</Text>
-                    <View style={styles.optionTextContainer}>
+                    <View style={styles.optionTextBox}>
                       <Text
                         style={[
                           styles.optionText,
-                          selectedConnection === option.id && styles.selectedOptionText,
-                        ]}
-                      >
-                        <Text style={styles.boldText}>{option.text}</Text>
+                          selectedConnection === option.id &&
+                            styles.selectedText,
+                        ]}>
+                        <Text style={styles.optionTitle}>{option.text}</Text>
                         <Text style={styles.optionDescription}>
                           {option.description}
                         </Text>
@@ -129,20 +129,18 @@ const QuranConnectionScreen = ({ route }: { route: any }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    width: '100%',
+    paddingHorizontal: 20,
+  },
+  keyboardAvoid: {
+    flex: 1,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 0,
-    marginTop: 20,
-  },
-  backButton: {
-    padding: 0,
+    marginTop: 50,
+    marginBottom: 20,
   },
   backButtonText: {
     color: 'white',
@@ -155,13 +153,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   progressContainer: {
-    width: '100%',
-    marginVertical: 20,
+    marginBottom: 30,
   },
   progressBar: {
-    height: 4,
+    height: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 2,
+    borderRadius: 3,
     overflow: 'hidden',
   },
   progress: {
@@ -170,30 +167,25 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    alignItems: 'flex-start',
-    width: '100%',
   },
   question: {
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 25,
+    marginBottom: 30,
   },
   optionsContainer: {
-    width: '100%',
-    marginTop: 20,
+    gap: 15,
   },
-  connectionOption: {
-    width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  optionCard: {
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 12,
-    marginBottom: 15,
     padding: 16,
   },
-  selectedOption: {
-    backgroundColor: 'Gray',
+  optionSelected: {
+    backgroundColor: '#FFFFFF',
   },
-  optionContent: {
+  optionRow: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -201,41 +193,23 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginRight: 12,
   },
-  optionTextContainer: {
+  optionTextBox: {
     flex: 1,
   },
   optionText: {
     color: 'white',
-    fontSize: 18,
-    fontWeight: 'normal',
+    fontSize: 16,
   },
-  boldText: {
-    fontWeight: 'bold',
-  },
-  optionDescription: {
-    color: '#e4e4e7',
-    fontSize: 14,
-    marginTop: 4,
-  },
-  selectedOptionText: {
+  selectedText: {
     color: '#0A333A',
   },
-  continueButton: {
-    backgroundColor: '#FFD700',
-    width: '100%',
-    padding: 16,
-    borderRadius: 50,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  disabledContinueButton: {
-    backgroundColor: '#FFD700',
-    opacity: 0.5,
-  },
-  continueButtonText: {
-    color: '#0A333A',
+  optionTitle: {
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  optionDescription: {
+    fontSize: 14,
+    color: '#e4e4e7',
   },
 });
 

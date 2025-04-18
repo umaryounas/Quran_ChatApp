@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,23 +8,19 @@ import {
   Platform,
   Image,
   TouchableOpacity,
-  Animated,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 
-const QuizScreen12 = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
+const QuizScreen12 = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
   const navigation = useNavigation<NavigationProp>();
   const [percentage, setPercentage] = useState(0);
-  
+
   // Animation effect to increase percentage from 0 to 100
   useEffect(() => {
-    // Start with 0%
     setPercentage(0);
-    
-    // Set up interval to increment percentage
     const interval = setInterval(() => {
       setPercentage(prevPercentage => {
         if (prevPercentage >= 100) {
@@ -33,14 +29,20 @@ const QuizScreen12 = ({ route }: { route: any }) => {
         }
         return prevPercentage + 1;
       });
-    }, 50); // Adjust speed of animation (lower = faster)
-    
-    // Clean up interval on component unmount
+    }, 50);
     return () => clearInterval(interval);
   }, []);
 
   const handleContinue = () => {
-    navigation.navigate('QuizScreen13', { userData });
+    navigation.navigate('QuizScreen13', {userData});
+  };
+
+  const handleBack = () => {
+    navigation.goBack();
+  };
+
+  const handleSkip = () => {
+    navigation.navigate('QuizScreen13', {userData});
   };
 
   return (
@@ -48,15 +50,14 @@ const QuizScreen12 = ({ route }: { route: any }) => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
-        <SafeAreaView style={styles.container}>
+        keyboardVerticalOffset={50}>
+        <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <TouchableOpacity onPress={handleBack}>
               <Text style={styles.backButtonText}>←</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('QuizScreen13', { userData })}>
+            <TouchableOpacity onPress={handleSkip}>
               <Text style={styles.skipText}>Skip</Text>
             </TouchableOpacity>
           </View>
@@ -64,28 +65,24 @@ const QuizScreen12 = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '100%' }]} />
+              <View style={[styles.progress, {width: '100%'}]} />
             </View>
           </View>
 
           {/* Main Content */}
           <View style={styles.content}>
             <View style={styles.calculationContainer}>
-              <Text style={styles.calculatingText}>Calculating your response...</Text>
+              <Text style={styles.calculatingText}>
+                Calculating your response...
+              </Text>
               <Text style={styles.percentText}>{percentage}%</Text>
-              
-              {/* Custom progress circle */}
               <View style={styles.progressCircleContainer}>
                 <View style={styles.progressBackground}>
-                  <View 
-                    style={[
-                      styles.progressFill, 
-                      { width: `${percentage}%` }
-                    ]} 
+                  <View
+                    style={[styles.progressFill, {width: `${percentage}%`}]}
                   />
                 </View>
               </View>
-              
               <Image
                 source={require('../assets/images/glass.gif')}
                 style={styles.searchIcon}
@@ -95,14 +92,13 @@ const QuizScreen12 = ({ route }: { route: any }) => {
           </View>
 
           {/* Continue Button */}
-          <TouchableOpacity 
+          <TouchableOpacity
             style={[
               styles.continueButton,
-              percentage < 100 && styles.disabledButton
-            ]} 
+              percentage < 100 && styles.disabledButton,
+            ]}
             onPress={handleContinue}
-            disabled={percentage < 100}
-          >
+            disabled={percentage < 100}>
             <Text style={styles.continueButtonText}>Continue</Text>
           </TouchableOpacity>
         </SafeAreaView>
@@ -116,16 +112,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 16,
-    marginTop: 20,
-  },
-  backButton: {
-    padding: 0,
+    marginTop: 60,
+    marginBottom: 20,
   },
   backButtonText: {
     color: 'white',
@@ -138,14 +133,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   progressContainer: {
-    width: '100%',
-    paddingHorizontal: 16,
-    marginVertical: 20,
+    marginBottom: 30,
   },
   progressBar: {
-    height: 4,
+    height: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 2,
+    borderRadius: 3,
     overflow: 'hidden',
   },
   progress: {
@@ -157,27 +150,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    paddingHorizontal: 16,
   },
   calculationContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
+  calculatingText: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
   percentText: {
     color: 'white',
     fontSize: 32,
     fontWeight: 'bold',
-    marginVertical: 20,
-  },
-  calculatingText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: '500',
-    marginTop: 10,
+    marginBottom: 20,
   },
   progressCircleContainer: {
-    marginVertical: 10,
     width: '80%',
+    marginBottom: 30,
   },
   progressBackground: {
     height: 8,
@@ -191,18 +183,16 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   searchIcon: {
-    width: 200,
+    width: 180,
     height: 180,
-    marginTop: 20,
   },
   continueButton: {
     backgroundColor: '#FFD700',
-    width: '90%',
-    padding: 16,
-    borderRadius: 50,
+    paddingVertical: 16,
+    borderRadius: 12,
     alignItems: 'center',
+    width: '100%',
     marginBottom: 20,
-    alignSelf: 'center',
   },
   disabledButton: {
     opacity: 0.6,

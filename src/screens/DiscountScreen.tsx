@@ -7,9 +7,9 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 
 const DiscountScreen = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -23,18 +23,21 @@ const DiscountScreen = () => {
             <Text style={styles.closeIcon}>✕</Text>
           </TouchableOpacity>
         </View>
-        
+
         <View style={styles.content}>
           <View style={styles.discountHeaderContainer}>
-            <Image 
-              source={require('../assets/images/Logo.png')} 
-              style={styles.discountLogo} 
+            <Image
+              source={require('../assets/images/Logo.png')}
+              style={styles.discountLogo}
             />
           </View>
 
-          <Text style={styles.discountTitle}>We're Cutting Our Profits to Make This Accessible for You</Text>
+          <Text style={styles.discountTitle}>
+            We're Cutting Our Profits to Make This Accessible for You
+          </Text>
           <Text style={styles.discountSubtitle}>
-            This is the best discount we can offer while keeping the app running.
+            This is the best discount we can offer while keeping the app
+            running.
           </Text>
 
           <View style={styles.discountBadgeContainer}>
@@ -43,9 +46,7 @@ const DiscountScreen = () => {
           </View>
 
           <View style={styles.countdownContainer}>
-            <Text style={styles.countdownText}>
-              Countdown ends in...
-            </Text>
+            <Text style={styles.countdownText}>Countdown ends in...</Text>
             <Text style={styles.countdownTimer}>04 : 59</Text>
           </View>
 
@@ -54,7 +55,7 @@ const DiscountScreen = () => {
               <View style={styles.bestPriceContainer}>
                 <Text style={styles.bestPriceText}>Lowest Price ever</Text>
               </View>
-              
+
               <View style={styles.yearlyContainer}>
                 <View style={styles.yearlyDetails}>
                   <Text style={styles.yearlyText}>Yearly</Text>
@@ -66,12 +67,16 @@ const DiscountScreen = () => {
           </View>
 
           <View style={styles.footer}>
-            <TouchableOpacity style={styles.claimButton} onPress={() => navigation.navigate('Awareness1Screen')}> 
+            <TouchableOpacity
+              style={styles.claimButton}
+              onPress={() => navigation.navigate('Awareness1Screen')}>
               <Text style={styles.claimButtonText}>Claim your offer now</Text>
             </TouchableOpacity>
-            
+
             <View style={styles.guaranteeContainer}>
-              <Text style={styles.guaranteeText}>Cancel Anytime ✅  -  Money back guarantee 🛡️</Text>
+              <Text style={styles.guaranteeText}>
+                Cancel Anytime ✅ - Money back guarantee 🛡️
+              </Text>
             </View>
           </View>
         </View>
@@ -90,17 +95,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    paddingHorizontal: 10,
-    marginTop: 25,
+    paddingHorizontal: 25,
+    marginTop: 50,
   },
   headerTitle: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: '600',
   },
   closeIcon: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 20,
   },
   content: {
     flex: 1,

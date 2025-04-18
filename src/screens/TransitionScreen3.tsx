@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
   progressContainer: {
     width: '100%',
     alignItems: 'center',
-    marginTop: 15,
     marginBottom: 10,
+    marginTop: 50,
   },
   contentArea: {
     flex: 1,

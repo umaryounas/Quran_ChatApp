@@ -31,13 +31,11 @@ const QuizScreen11 = ({route}: {route: any}) => {
   //   const unsubscribe = auth.onAuthStateChanged(user => {
   //     dispatch(setUser(user));
   //   });
-
   //   return () => unsubscribe();
   // }, [dispatch]);
 
   const handleContinue = async () => {
     try {
-      // Replace with your actual email and password
       console.log('Moving to next screen with data:', userData);
       await dispatch(createUser(userData));
       navigation.navigate('QuizScreen12', {userData});
@@ -70,10 +68,10 @@ const QuizScreen11 = ({route}: {route: any}) => {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={50}>
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+            <TouchableOpacity onPress={handleBack}>
               <Text style={styles.backButtonText}>←</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleSkip}>
@@ -129,21 +127,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
-  imageContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 30,
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 20,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 0,
-    marginTop: 20,
-  },
-  backButton: {
-    padding: 0,
+    marginTop: 60,
+    marginBottom: 20,
   },
   backButtonText: {
     color: 'white',
@@ -156,13 +148,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   progressContainer: {
-    width: '100%',
-    marginVertical: 20,
+    marginBottom: 30,
   },
   progressBar: {
-    height: 4,
+    height: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 2,
+    borderRadius: 3,
     overflow: 'hidden',
   },
   progress: {
@@ -177,19 +168,12 @@ const styles = StyleSheet.create({
   },
   securityContainer: {
     alignItems: 'center',
-    padding: 20,
+    paddingVertical: 20,
   },
-  lockIconContainer: {
-    width: 80,
-    height: 80,
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 40,
+  imageContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
-  },
-  lockIcon: {
-    fontSize: 36,
+    marginBottom: 30,
   },
   securityTitle: {
     color: 'white',
@@ -199,17 +183,15 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   securityDescription: {
-    color: 'white',
+    color: '#e4e4e7',
     fontSize: 16,
     textAlign: 'center',
-    lineHeight: 22,
-    marginBottom: 20,
+    lineHeight: 24,
   },
   continueButton: {
     backgroundColor: '#FFD700',
-    width: '100%',
-    padding: 16,
-    borderRadius: 50,
+    paddingVertical: 16,
+    borderRadius: 12,
     alignItems: 'center',
     marginBottom: 20,
   },
@@ -226,6 +208,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
+    fontSize: 14,
     textAlign: 'center',
     marginTop: 10,
   },

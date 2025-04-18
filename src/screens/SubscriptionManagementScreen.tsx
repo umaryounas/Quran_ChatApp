@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const SubscriptionManagementScreen = () => {
@@ -51,12 +51,14 @@ const SubscriptionManagementScreen = () => {
         <View style={styles.content}>
           <View style={styles.subscriptionCard}>
             <View style={styles.subscriptionHeader}>
-              <Text style={styles.currentSubscriptionText}>Current Subscription</Text>
+              <Text style={styles.currentSubscriptionText}>
+                Current Subscription
+              </Text>
               <View style={styles.activeIndicator}>
                 <Text style={styles.activeText}>Expires on: Dec-2025</Text>
               </View>
             </View>
-            
+
             <View style={styles.planInfo}>
               <Text style={styles.planTitle}>Yearly</Text>
               <Text style={styles.planPrice}>$2.50/mo</Text>
@@ -64,10 +66,9 @@ const SubscriptionManagementScreen = () => {
             <Text style={styles.planDetails}>12 months • 29 USD</Text>
           </View>
 
-          <TouchableOpacity 
-            style={styles.optionButton} 
-            onPress={handleUpgradePlan}
-          >
+          <TouchableOpacity
+            style={styles.optionButton}
+            onPress={handleUpgradePlan}>
             <View style={styles.optionButtonContent}>
               <Icon name="arrow-up-circle" size={20} color="#FFFFFF" />
               <Text style={styles.optionButtonText}>Upgrade Plan</Text>
@@ -75,10 +76,9 @@ const SubscriptionManagementScreen = () => {
             <Icon name="chevron-forward" size={20} color="#A7A7A7" />
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.optionButton} 
-            onPress={handlePaymentMethod}
-          >
+          <TouchableOpacity
+            style={styles.optionButton}
+            onPress={handlePaymentMethod}>
             <View style={styles.optionButtonContent}>
               <Icon name="card" size={20} color="#FFFFFF" />
               <Text style={styles.optionButtonText}>Payment Method</Text>
@@ -86,10 +86,9 @@ const SubscriptionManagementScreen = () => {
             <Icon name="chevron-forward" size={20} color="#A7A7A7" />
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.optionButton} 
-            onPress={handleCancelSubscription}
-          >
+          <TouchableOpacity
+            style={styles.optionButton}
+            onPress={handleCancelSubscription}>
             <View style={styles.optionButtonContent}>
               <Icon name="close-circle" size={20} color="#FFFFFF" />
               <Text style={styles.optionButtonText}>Cancel Subscription</Text>
@@ -120,14 +119,14 @@ const styles = StyleSheet.create({
     marginLeft: 25,
   },
   header: {
-    marginTop: 20,
+    marginTop: 30,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderBottomWidth: 1, 
+    borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.2)',
     marginBottom: 10,
   },

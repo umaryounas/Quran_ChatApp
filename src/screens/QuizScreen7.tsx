@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,33 +8,35 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {UserData} from '../types';
+import {NavigationProp} from '../types/navigation';
 
-const QuizScreen7 = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
-  const [selectedOption, setSelectedOption] = useState<string>(userData.emotionalConnection || '');
+const QuizScreen7 = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
+  const [selectedOption, setSelectedOption] = useState<string>(
+    userData.emotionalConnection || '',
+  );
   const navigation = useNavigation<NavigationProp>();
 
   const options = [
     {
       id: 'frequently',
       text: 'Frequently',
-      description: ' - I\'m able to feel connected.',
+      description: " - I'm able to feel connected.",
       icon: '😊',
     },
     {
       id: 'sometimes',
       text: 'Sometimes',
-      description: ' - I feel moments of connection, but it\'s not consistent.',
+      description: " - I feel moments of connection, but it's not consistent.",
       icon: '🤔',
     },
     {
       id: 'rarely',
       text: 'Rarely or Never',
-      description: ' - I feel distant from the Qur\'an.',
+      description: " - I feel distant from the Qur'an.",
       icon: '😞',
     },
   ];
@@ -44,26 +46,19 @@ const QuizScreen7 = ({ route }: { route: any }) => {
       ...userData,
       emotionalConnection: optionId,
     };
-
-    console.log('Updated onboarding data:', updatedUserData);
-    navigation.navigate('QuizScreen8', { userData: updatedUserData });
+    navigation.navigate('QuizScreen8', {userData: updatedUserData});
   };
 
-  const handleBack = () => {
-    navigation.goBack();
-  };
+  const handleBack = () => navigation.goBack();
 
-  const handleSkip = () => {
-    navigation.navigate('QuizScreen8', { userData });
-  };
+  const handleSkip = () => navigation.navigate('QuizScreen8', {userData});
 
   return (
     <GradientBackground>
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
+        keyboardVerticalOffset={50}>
         <SafeAreaView style={styles.container}>
           {/* Header */}
           <View style={styles.header}>
@@ -78,42 +73,45 @@ const QuizScreen7 = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '54%' }]} />
+              <View style={[styles.progress, {width: '54%'}]} />
             </View>
           </View>
 
-          {/* Main Content */}
+          {/* Question */}
           <View style={styles.content}>
-            <Text style={styles.question}>Do you feel emotionally or spiritually disconnected from the Qur'an?</Text>
+            <Text style={styles.question}>
+              Do you feel emotionally or spiritually disconnected from the
+              Qur'an?
+            </Text>
 
+            {/* Options */}
             <View style={styles.optionsContainer}>
-              {options.map((option) => (
-                <TouchableOpacity
-                  key={option.id}
-                  style={[
-                    styles.option,
-                    selectedOption === option.id && styles.selectedOption,
-                  ]}
-                  onPress={() => handleOptionSelect(option.id)}
-                >
-                  <View style={styles.optionContent}>
-                    <Text style={styles.optionIcon}>{option.icon}</Text>
-                    <View style={styles.optionTextContainer}>
-                      <Text
-                        style={[
-                          styles.optionText,
-                          selectedOption === option.id && styles.selectedOptionText,
-                        ]}
-                      >
-                        <Text style={styles.boldText}>{option.text}</Text>
-                        <Text style={styles.optionDescription}>
-                          {option.description}
+              {options.map(option => {
+                const isSelected = selectedOption === option.id;
+                return (
+                  <TouchableOpacity
+                    key={option.id}
+                    style={[styles.option, isSelected && styles.selectedOption]}
+                    onPress={() => handleOptionSelect(option.id)}
+                    activeOpacity={0.8}>
+                    <View style={styles.optionContent}>
+                      <Text style={styles.optionIcon}>{option.icon}</Text>
+                      <View style={styles.optionTextContainer}>
+                        <Text
+                          style={[
+                            styles.optionText,
+                            isSelected && styles.selectedOptionText,
+                          ]}>
+                          <Text style={styles.boldText}>{option.text}</Text>
+                          <Text style={styles.optionDescription}>
+                            {option.description}
+                          </Text>
                         </Text>
-                      </Text>
+                      </View>
                     </View>
-                  </View>
-                </TouchableOpacity>
-              ))}
+                  </TouchableOpacity>
+                );
+              })}
             </View>
           </View>
         </SafeAreaView>
@@ -131,12 +129,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 0,
-    marginTop: 20,
+    marginTop: 50,
+    paddingHorizontal: 16,
   },
   backButton: {
-    padding: 0,
+    padding: 8,
   },
   backButtonText: {
     color: 'white',
@@ -151,6 +148,7 @@ const styles = StyleSheet.create({
   progressContainer: {
     width: '100%',
     marginVertical: 20,
+    paddingHorizontal: 16,
   },
   progressBar: {
     height: 4,
@@ -164,8 +162,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    alignItems: 'flex-start',
-    width: '100%',
+    paddingHorizontal: 16,
   },
   question: {
     color: 'white',
@@ -174,18 +171,16 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   optionsContainer: {
-    width: '100%',
-    marginTop: 20,
+    marginTop: 10,
   },
   option: {
-    width: '100%',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
-    marginBottom: 15,
     padding: 16,
+    marginBottom: 15,
   },
   selectedOption: {
-    backgroundColor: 'Gray',
+    backgroundColor: '#ffffff',
   },
   optionContent: {
     flexDirection: 'row',
@@ -201,7 +196,9 @@ const styles = StyleSheet.create({
   optionText: {
     color: 'white',
     fontSize: 18,
-    fontWeight: 'normal',
+  },
+  selectedOptionText: {
+    color: '#0A333A',
   },
   boldText: {
     fontWeight: 'bold',
@@ -210,9 +207,6 @@ const styles = StyleSheet.create({
     color: '#e4e4e7',
     fontSize: 14,
     marginTop: 4,
-  },
-  selectedOptionText: {
-    color: '#0A333A',
   },
 });
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,9 @@ import {
   SafeAreaView,
   Switch,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Slider from '@react-native-community/slider';
 
@@ -39,16 +39,21 @@ const VoiceToTextSettingsScreen = () => {
         </View>
 
         <View style={styles.content}>
-        <Text style={styles.title}>Voice-to-Text Settings</Text>
+          <Text style={styles.title}>Voice-to-Text Settings</Text>
           <Text style={styles.subtitle}>Check voice to text settings</Text>
 
           <View style={styles.settingItem}>
             <View style={styles.settingLabelContainer}>
-              <Icon name="mic" size={22} color="#FFD700" style={styles.settingIcon} />
+              <Icon
+                name="mic"
+                size={22}
+                color="#FFD700"
+                style={styles.settingIcon}
+              />
               <Text style={styles.settingLabel}>Enable microphone input</Text>
             </View>
             <Switch
-              trackColor={{ false: 'rgba(255, 255, 255, 0.3)', true: '#FFD700' }}
+              trackColor={{false: 'rgba(255, 255, 255, 0.3)', true: '#FFD700'}}
               thumbColor={microphoneEnabled ? '#FFFFFF' : '#f4f3f4'}
               ios_backgroundColor="rgba(255, 255, 255, 0.3)"
               onValueChange={setMicrophoneEnabled}
@@ -58,8 +63,12 @@ const VoiceToTextSettingsScreen = () => {
 
           <View style={styles.sliderContainer}>
             <View style={styles.sliderHeader}>
-              <Text style={styles.sliderLabel}>Adjust voice input sensitivity</Text>
-              <Text style={styles.sliderValue}>{Math.round(sensitivityValue * 100)}%</Text>
+              <Text style={styles.sliderLabel}>
+                Adjust voice input sensitivity
+              </Text>
+              <Text style={styles.sliderValue}>
+                {Math.round(sensitivityValue * 100)}%
+              </Text>
             </View>
             <Slider
               style={styles.slider}
@@ -98,7 +107,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   header: {
-    marginTop: 20,
+    marginTop: 30,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',

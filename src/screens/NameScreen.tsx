@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingHorizontal: 10,
-    marginTop: 20, // Added margin for spacing
+    marginTop: 35,
   },
   backButton: {
     padding: 10,

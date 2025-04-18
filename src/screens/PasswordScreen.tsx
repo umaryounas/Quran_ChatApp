@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingHorizontal: 10,
-    marginTop: 20,
+    marginTop: 50,
   },
   backButton: {
     padding: 10,

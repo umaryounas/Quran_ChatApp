@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,17 +7,20 @@ import {
   SafeAreaView,
   Switch,
 } from 'react-native';
-import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
+import {useNavigation, useRoute, RouteProp} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 
 const AppLockMainScreen = () => {
   const navigation = useNavigation<NavigationProp>();
-  type AppLockMainScreenRouteProp = RouteProp<{ params: { appLockEnabled?: boolean } }, 'params'>;
+  type AppLockMainScreenRouteProp = RouteProp<
+    {params: {appLockEnabled?: boolean}},
+    'params'
+  >;
   const route = useRoute<AppLockMainScreenRouteProp>();
   const [isAppLockEnabled, setIsAppLockEnabled] = React.useState(false);
-  
+
   useEffect(() => {
     if (route.params?.appLockEnabled !== undefined) {
       setIsAppLockEnabled(route.params.appLockEnabled);
@@ -53,47 +56,71 @@ const AppLockMainScreen = () => {
           <View style={styles.optionContainer}>
             <View style={styles.optionRow}>
               <View style={styles.optionIcon}>
-                <Ionicons name="lock-closed-outline" size={24} color="#FFFFFF" />
+                <Ionicons
+                  name="lock-closed-outline"
+                  size={24}
+                  color="#FFFFFF"
+                />
               </View>
               <View style={styles.optionTextContainer}>
                 <Text style={styles.optionText}>App Lock</Text>
-                <Text style={styles.optionDescription}>Choose a password for your app</Text>
+                <Text style={styles.optionDescription}>
+                  Choose a password for your app
+                </Text>
               </View>
               <Switch
                 value={isAppLockEnabled}
                 onValueChange={toggleAppLock}
-                trackColor={{ false: 'rgba(255, 255, 255, 0.2)', true: '#FFD700' }}
+                trackColor={{
+                  false: 'rgba(255, 255, 255, 0.2)',
+                  true: '#FFD700',
+                }}
                 thumbColor="#FFFFFF"
                 style={styles.toggle}
               />
             </View>
           </View>
 
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.settingItem}
-            onPress={() => navigation.navigate('CreatePinScreen')}
-          >
+            onPress={() => navigation.navigate('CreatePinScreen')}>
             <View style={styles.settingIconContainer}>
               <Ionicons name="key-outline" size={22} color="#FFFFFF" />
             </View>
             <View style={styles.settingTextContainer}>
               <Text style={styles.settingText}>Set password</Text>
-              <Text style={styles.settingDescription}>Set or change password</Text>
+              <Text style={styles.settingDescription}>
+                Set or change password
+              </Text>
             </View>
-            <Ionicons name="chevron-forward" size={22} color="#A7A7A7" style={styles.chevron} />
+            <Ionicons
+              name="chevron-forward"
+              size={22}
+              color="#A7A7A7"
+              style={styles.chevron}
+            />
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={styles.settingItem}
-          >
+          <TouchableOpacity style={styles.settingItem}>
             <View style={styles.settingIconContainer}>
-              <Ionicons name="document-text-outline" size={22} color="#FFFFFF" />
+              <Ionicons
+                name="document-text-outline"
+                size={22}
+                color="#FFFFFF"
+              />
             </View>
             <View style={styles.settingTextContainer}>
               <Text style={styles.settingText}>Security Question</Text>
-              <Text style={styles.settingDescription}>If you forget password</Text>
+              <Text style={styles.settingDescription}>
+                If you forget password
+              </Text>
             </View>
-            <Ionicons name="chevron-forward" size={22} color="#A7A7A7" style={styles.chevron} />
+            <Ionicons
+              name="chevron-forward"
+              size={22}
+              color="#A7A7A7"
+              style={styles.chevron}
+            />
           </TouchableOpacity>
         </View>
         {/* <View style={styles.bottomBar} /> */}
@@ -108,7 +135,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   header: {
-    marginTop: 20,
+    marginTop: 50,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -178,7 +205,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   toggle: {
-    transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }],
+    transform: [{scaleX: 0.8}, {scaleY: 0.8}],
   },
   settingItem: {
     flexDirection: 'row',

@@ -7,11 +7,13 @@ import {
   SafeAreaView,
   Image,
   Dimensions,
+  Platform,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
 import {NavigationProp} from '../types/navigation';
 import {User} from '../data/models/domain/user';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const {width} = Dimensions.get('window');
 
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingHorizontal: 10,
-    marginTop: 20,
+    marginTop: 50,
   },
   backButton: {
     padding: 0,
@@ -184,11 +186,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    // paddingHorizontal: 10,
   },
   genderOption: {
     width: '45%',
-    height: 120,
+    height: 160, // increased from 120
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 12,
     justifyContent: 'center',
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
   genderIconContainer: {
     width: 80,
     height: 80,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
     padding: 10,

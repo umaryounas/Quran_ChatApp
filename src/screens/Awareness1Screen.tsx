@@ -10,9 +10,9 @@ import {
   Dimensions,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { NavigationProp } from '../types/navigation';
-import { useNavigation } from '@react-navigation/native';
-const { width } = Dimensions.get('window');
+import {NavigationProp} from '../types/navigation';
+import {useNavigation} from '@react-navigation/native';
+const {width} = Dimensions.get('window');
 
 const Awareness1Screen = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -23,50 +23,66 @@ const Awareness1Screen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" />
-      
+
       <View style={styles.imageContainer}>
-        <Image 
-          source={require('../assets/images/awareness1.png')} 
-          style={styles.image} 
-          resizeMode="contain" 
+        <Image
+          source={require('../assets/images/awareness1.png')}
+          style={styles.image}
+          resizeMode="contain"
         />
       </View>
-      
+
       <Text style={styles.title}>
         You stand before Allah... but your mind is elsewhere.
       </Text>
-      
+
       <View style={styles.quoteContainer}>
-        <Ionicons name="bulb" size={24} color="#FFD700" style={styles.quoteIcon} />
+        <Ionicons
+          name="bulb"
+          size={24}
+          color="#FFD700"
+          style={styles.quoteIcon}
+        />
         <Text style={styles.quoteText}>
-          So woe to those who pray, but are heedless of their prayer." (Qur'an 107:4-5)
+          So woe to those who pray, but are heedless of their prayer." (Qur'an
+          107:4-5)
         </Text>
       </View>
-      
+
       <View style={styles.statContainer}>
-        <Ionicons name="chatbubble" size={24} color="#00BFFF" style={styles.statIcon} />
+        <Ionicons
+          name="chatbubble"
+          size={24}
+          color="#00BFFF"
+          style={styles.statIcon}
+        />
         <Text style={styles.statText}>
           80% of Muslims struggle with focus in Salah.
         </Text>
       </View>
-      
+
       <View style={styles.warningContainer}>
-        <Ionicons name="close" size={24} color="#FFD700" style={styles.warningIcon} />
+        <Ionicons
+          name="close"
+          size={24}
+          color="#FFD700"
+          style={styles.warningIcon}
+        />
         <Text style={styles.warningText}>
           Your body prays, but is your heart in it?
         </Text>
       </View>
-      
+
       <View style={styles.dotsContainer}>
         <View style={[styles.dot, styles.activeDot]} />
         <View style={styles.dot} />
         <View style={styles.dot} />
       </View>
-      
+
       <TouchableOpacity style={styles.button} onPress={handleNext}>
         <Text style={styles.buttonText}>I Want to Fix It</Text>
       </TouchableOpacity>
-      
+
       {/* <View style={styles.bottomBar} /> */}
     </SafeAreaView>
   );

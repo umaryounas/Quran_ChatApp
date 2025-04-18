@@ -7,3 +7,4 @@ export class AuthenticateUserResponse extends BaseResponse<UserDto> {
     // Object.assign(this, response);
   }
 }
+/

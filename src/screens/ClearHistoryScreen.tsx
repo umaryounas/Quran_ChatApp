@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,7 @@ import {
   SafeAreaView,
   Modal,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GradientBackground from '../components/GradientBackground';
 
@@ -45,19 +45,22 @@ const ClearHistoryScreen = () => {
 
         <View style={styles.content}>
           <View style={styles.infoContainer}>
-            <Text style={styles.infoTitle}>
-              Clear your chat history
-            </Text>
+            <Text style={styles.infoTitle}>Clear your chat history</Text>
             <Text style={styles.infoText}>
-              This action will permanently delete all your conversations and cannot be undone.
+              This action will permanently delete all your conversations and
+              cannot be undone.
             </Text>
           </View>
 
-          <TouchableOpacity 
-            style={styles.clearButton} 
-            onPress={handleClearHistory}
-          >
-            <Ionicons name="trash-outline" size={24} color="#FFFFFF" style={styles.clearIcon} />
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={handleClearHistory}>
+            <Ionicons
+              name="trash-outline"
+              size={24}
+              color="#FFFFFF"
+              style={styles.clearIcon}
+            />
             <Text style={styles.clearButtonText}>Clear All Chat History</Text>
           </TouchableOpacity>
         </View>
@@ -67,30 +70,27 @@ const ClearHistoryScreen = () => {
           animationType="fade"
           transparent={true}
           visible={confirmModalVisible}
-          onRequestClose={() => setConfirmModalVisible(false)}
-        >
+          onRequestClose={() => setConfirmModalVisible(false)}>
           <View style={styles.modalOverlay}>
             <View style={styles.modalContainer}>
               <View style={styles.modalIconContainer}>
                 <Ionicons name="trash-outline" size={40} color="#FFFFFF" />
               </View>
-              
+
               <Text style={styles.modalTitle}>Are You Sure?</Text>
               <Text style={styles.modalText}>
                 Your chat history will be deleted permanently if you proceed.
               </Text>
-              
-              <TouchableOpacity 
+
+              <TouchableOpacity
                 style={styles.confirmButton}
-                onPress={confirmClearHistory}
-              >
+                onPress={confirmClearHistory}>
                 <Text style={styles.confirmButtonText}>Yes</Text>
               </TouchableOpacity>
-              
-              <TouchableOpacity 
+
+              <TouchableOpacity
                 style={styles.cancelButton}
-                onPress={() => setConfirmModalVisible(false)}
-              >
+                onPress={() => setConfirmModalVisible(false)}>
                 <Text style={styles.cancelButtonText}>Cancel</Text>
               </TouchableOpacity>
             </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   header: {
-    marginTop: 20,
+    marginTop: 30,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,9 +8,9 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const ProfileInformationScreen = () => {
@@ -41,9 +41,9 @@ const ProfileInformationScreen = () => {
 
         <View style={styles.content}>
           <View style={styles.avatarContainer}>
-            <Image 
-              source={require('../assets/images/img1.jpeg')} 
-              style={styles.avatar} 
+            <Image
+              source={require('../assets/images/img1.jpeg')}
+              style={styles.avatar}
             />
             <View style={styles.editIconContainer}>
               <Icon name="camera" size={15} color="#0A333A" />
@@ -53,7 +53,12 @@ const ProfileInformationScreen = () => {
           <View style={styles.inputSection}>
             <Text style={styles.inputLabel}>Name</Text>
             <View style={styles.inputContainer}>
-              <Icon name="person" size={20} color="#A7A7A7" style={styles.inputIcon} />
+              <Icon
+                name="person"
+                size={20}
+                color="#A7A7A7"
+                style={styles.inputIcon}
+              />
               <TextInput
                 style={styles.input}
                 value={name}
@@ -67,7 +72,12 @@ const ProfileInformationScreen = () => {
           <View style={styles.inputSection}>
             <Text style={styles.inputLabel}>Number</Text>
             <View style={styles.inputContainer}>
-              <Icon name="call" size={20} color="#A7A7A7" style={styles.inputIcon} />
+              <Icon
+                name="call"
+                size={20}
+                color="#A7A7A7"
+                style={styles.inputIcon}
+              />
               <TextInput
                 style={styles.input}
                 value={number}
@@ -82,7 +92,12 @@ const ProfileInformationScreen = () => {
           <View style={styles.inputSection}>
             <Text style={styles.inputLabel}>Email</Text>
             <View style={styles.inputContainer}>
-              <Icon name="mail" size={20} color="#A7A7A7" style={styles.inputIcon} />
+              <Icon
+                name="mail"
+                size={20}
+                color="#A7A7A7"
+                style={styles.inputIcon}
+              />
               <TextInput
                 style={styles.input}
                 value={email}
@@ -110,14 +125,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   header: {
-    marginTop: 20,
+    marginTop: 30,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderBottomWidth: 1, 
+    borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.2)',
     marginBottom: 10,
   },

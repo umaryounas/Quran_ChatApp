@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,9 +7,9 @@ import {
   SafeAreaView,
   TextInput,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const ChangePasswordScreen = () => {
@@ -38,16 +38,13 @@ const ChangePasswordScreen = () => {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Change Password</Text>
           <View style={styles.emptyView} />
-
         </View>
 
         <View style={styles.content}>
-          <Text style={styles.subtitle}>
-          Change Password
-          </Text>
+          <Text style={styles.subtitle}>Change Password</Text>
 
           <Text style={styles.title2}>
-          Verify Your Identity and Set a New Password.
+            Verify Your Identity and Set a New Password.
           </Text>
 
           <View style={styles.inputSection}>
@@ -61,8 +58,13 @@ const ChangePasswordScreen = () => {
                 placeholderTextColor="#A7A7A7"
                 selectionColor="#FFD700"
               />
-              <TouchableOpacity onPress={() => setShowCurrentPassword(!showCurrentPassword)}>
-                <Icon name={showCurrentPassword ? "eye-off" : "eye"} size={20} color="#A7A7A7" />
+              <TouchableOpacity
+                onPress={() => setShowCurrentPassword(!showCurrentPassword)}>
+                <Icon
+                  name={showCurrentPassword ? 'eye-off' : 'eye'}
+                  size={20}
+                  color="#A7A7A7"
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -78,8 +80,13 @@ const ChangePasswordScreen = () => {
                 placeholderTextColor="#A7A7A7"
                 selectionColor="#FFD700"
               />
-              <TouchableOpacity onPress={() => setShowNewPassword(!showNewPassword)}>
-                <Icon name={showNewPassword ? "eye-off" : "eye"} size={20} color="#A7A7A7" />
+              <TouchableOpacity
+                onPress={() => setShowNewPassword(!showNewPassword)}>
+                <Icon
+                  name={showNewPassword ? 'eye-off' : 'eye'}
+                  size={20}
+                  color="#A7A7A7"
+                />
               </TouchableOpacity>
             </View>
           </View>
@@ -95,13 +102,20 @@ const ChangePasswordScreen = () => {
                 placeholderTextColor="#A7A7A7"
                 selectionColor="#FFD700"
               />
-              <TouchableOpacity onPress={() => setShowReEnterPassword(!showReEnterPassword)}>
-                <Icon name={showReEnterPassword ? "eye-off" : "eye"} size={20} color="#A7A7A7" />
+              <TouchableOpacity
+                onPress={() => setShowReEnterPassword(!showReEnterPassword)}>
+                <Icon
+                  name={showReEnterPassword ? 'eye-off' : 'eye'}
+                  size={20}
+                  color="#A7A7A7"
+                />
               </TouchableOpacity>
             </View>
           </View>
 
-          <TouchableOpacity style={styles.confirmButton} onPress={handleConfirm}>
+          <TouchableOpacity
+            style={styles.confirmButton}
+            onPress={handleConfirm}>
             <Text style={styles.confirmButtonText}>Confirm Password</Text>
           </TouchableOpacity>
         </View>
@@ -123,14 +137,14 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    marginTop: 20,
+    marginTop: 50,
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderBottomWidth: 1, 
+    borderBottomWidth: 1,
     borderBottomColor: 'rgba(255, 255, 255, 0.2)',
     marginBottom: 10,
   },

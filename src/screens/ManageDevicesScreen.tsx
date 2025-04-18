@@ -8,7 +8,7 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import GradientBackground from '../components/GradientBackground';
 
@@ -25,52 +25,50 @@ const ManageDevicesScreen = () => {
       name: 'iPhone 13 pro',
       location: 'Melbourne, Australia',
       time: '22 Jan at 10:40am',
-      isCurrentDevice: true
+      isCurrentDevice: true,
     },
     {
       id: '2',
       name: 'iPhone 13 pro',
       location: 'Melbourne, Australia',
       time: '22 Jan at 10:40am',
-      isCurrentDevice: false
+      isCurrentDevice: false,
     },
     {
       id: '3',
       name: 'iPhone 13 pro',
       location: 'Melbourne, Australia',
       time: '22 Jan at 10:40am',
-      isCurrentDevice: false
-    }
+      isCurrentDevice: false,
+    },
   ];
 
-interface Device {
+  interface Device {
     id: string;
     name: string;
     location: string;
     time: string;
     isCurrentDevice: boolean;
-}
+  }
 
-const handleRemoveDevice = (device: Device): void => {
+  const handleRemoveDevice = (device: Device): void => {
     if (device.isCurrentDevice) {
-        Alert.alert(
-            "Current Device",
-            "You cannot remove your current device.",
-            [{ text: "OK" }]
-        );
-        return;
+      Alert.alert('Current Device', 'You cannot remove your current device.', [
+        {text: 'OK'},
+      ]);
+      return;
     }
     Alert.alert(
-        "Remove Device",
-        `Are you sure you want to remove "${device.name}" from your account?`,
-        [
-            { text: "Cancel", style: "cancel" },
-            { text: "Remove", style: "destructive" }
-        ]
+      'Remove Device',
+      `Are you sure you want to remove "${device.name}" from your account?`,
+      [
+        {text: 'Cancel', style: 'cancel'},
+        {text: 'Remove', style: 'destructive'},
+      ],
     );
-};
+  };
 
-  const renderDevice = ({ item }: { item: Device }) => (
+  const renderDevice = ({item}: {item: Device}) => (
     <View style={styles.deviceItem}>
       <View style={styles.deviceIconContainer}>
         <Ionicons name="phone-portrait-outline" size={22} color="#FFFFFF" />
@@ -78,14 +76,17 @@ const handleRemoveDevice = (device: Device): void => {
       <View style={styles.deviceInfo}>
         <Text style={styles.deviceName}>
           {item.name}
-          {item.isCurrentDevice && <Text style={styles.currentDevice}> Current device</Text>}
+          {item.isCurrentDevice && (
+            <Text style={styles.currentDevice}> Current device</Text>
+          )}
         </Text>
-        <Text style={styles.deviceDetails}>{item.location} • {item.time}</Text>
+        <Text style={styles.deviceDetails}>
+          {item.location} • {item.time}
+        </Text>
       </View>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.removeButton}
-        onPress={() => handleRemoveDevice(item)}
-      >
+        onPress={() => handleRemoveDevice(item)}>
         <Ionicons name="trash-outline" size={20} color="#FF3B30" />
       </TouchableOpacity>
     </View>
@@ -100,11 +101,12 @@ const handleRemoveDevice = (device: Device): void => {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Manage Connected Devices</Text>
         </View>
-        
+
         <View style={styles.contentContainer}>
           <Text style={styles.sectionTitle}>Where you're logged in</Text>
           <Text style={styles.subtitle}>
-            We'll alert you at johndoe@email.com if there is any unusual activity on your account.
+            We'll alert you at johndoe@email.com if there is any unusual
+            activity on your account.
           </Text>
 
           <FlatList
@@ -115,7 +117,7 @@ const handleRemoveDevice = (device: Device): void => {
             contentContainerStyle={styles.devicesListContent}
           />
         </View>
-        
+
         {/* <View style={styles.tabIndicator} /> */}
       </SafeAreaView>
     </GradientBackground>
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    marginTop: 20,
+    marginTop: 30,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,14 +8,16 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { UserData } from '../types';
-import { NavigationProp } from '../types/navigation';
+import {UserData} from '../types';
+import {NavigationProp} from '../types/navigation';
 
-const QuizScreen6 = ({ route }: { route: any }) => {
-  const { userData = {} } = route.params || {};
-  const [selectedOption, setSelectedOption] = useState<string>(userData.focusStruggle || '');
+const QuizScreen6 = ({route}: {route: any}) => {
+  const {userData = {}} = route.params || {};
+  const [selectedOption, setSelectedOption] = useState<string>(
+    userData.focusStruggle || '',
+  );
   const navigation = useNavigation<NavigationProp>();
 
   const options = [
@@ -46,7 +48,7 @@ const QuizScreen6 = ({ route }: { route: any }) => {
     };
 
     console.log('Updated onboarding data:', updatedUserData);
-    navigation.navigate('QuizScreen7', { userData: updatedUserData });
+    navigation.navigate('QuizScreen7', {userData: updatedUserData});
   };
 
   const handleBack = () => {
@@ -54,7 +56,7 @@ const QuizScreen6 = ({ route }: { route: any }) => {
   };
 
   const handleSkip = () => {
-    navigation.navigate('QuizScreen7', { userData });
+    navigation.navigate('QuizScreen7', {userData});
   };
 
   return (
@@ -62,12 +64,11 @@ const QuizScreen6 = ({ route }: { route: any }) => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-        keyboardVerticalOffset={50}
-      >
-        <SafeAreaView style={styles.container}>
+        keyboardVerticalOffset={50}>
+        <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+            <TouchableOpacity onPress={handleBack}>
               <Text style={styles.backButtonText}>←</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleSkip}>
@@ -78,33 +79,34 @@ const QuizScreen6 = ({ route }: { route: any }) => {
           {/* Progress Bar */}
           <View style={styles.progressContainer}>
             <View style={styles.progressBar}>
-              <View style={[styles.progress, { width: '45%' }]} />
+              <View style={[styles.progress, {width: '45%'}]} />
             </View>
           </View>
 
           {/* Main Content */}
           <View style={styles.content}>
-            <Text style={styles.question}>Do you struggle with focus in Salah?</Text>
+            <Text style={styles.question}>
+              Do you struggle with focus in Salah?
+            </Text>
 
             <View style={styles.optionsContainer}>
-              {options.map((option) => (
+              {options.map(option => (
                 <TouchableOpacity
                   key={option.id}
                   style={[
                     styles.option,
                     selectedOption === option.id && styles.selectedOption,
                   ]}
-                  onPress={() => handleOptionSelect(option.id)}
-                >
+                  onPress={() => handleOptionSelect(option.id)}>
                   <View style={styles.optionContent}>
                     <Text style={styles.optionIcon}>{option.icon}</Text>
                     <View style={styles.optionTextContainer}>
                       <Text
                         style={[
                           styles.optionText,
-                          selectedOption === option.id && styles.selectedOptionText,
-                        ]}
-                      >
+                          selectedOption === option.id &&
+                            styles.selectedOptionText,
+                        ]}>
                         <Text style={styles.boldText}>{option.text}</Text>
                         <Text style={styles.optionDescription}>
                           {option.description}
@@ -127,16 +129,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 0,
-    marginTop: 20,
-  },
-  backButton: {
-    padding: 0,
+    marginTop: 50,
+    marginBottom: 20,
   },
   backButtonText: {
     color: 'white',
@@ -149,13 +150,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   progressContainer: {
-    width: '100%',
-    marginVertical: 20,
+    marginBottom: 30,
   },
   progressBar: {
-    height: 4,
+    height: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 2,
+    borderRadius: 3,
     overflow: 'hidden',
   },
   progress: {
@@ -164,28 +164,23 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    alignItems: 'flex-start',
-    width: '100%',
   },
   question: {
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 25,
+    marginBottom: 30,
   },
   optionsContainer: {
-    width: '100%',
-    marginTop: 20,
+    gap: 15,
   },
   option: {
-    width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 12,
-    marginBottom: 15,
     padding: 16,
   },
   selectedOption: {
-    backgroundColor: 'Gray',
+    backgroundColor: '#FFFFFF',
   },
   optionContent: {
     flexDirection: 'row',
@@ -200,19 +195,18 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: 'white',
-    fontSize: 18,
-    fontWeight: 'normal',
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-  optionDescription: {
-    color: '#e4e4e7',
-    fontSize: 14,
-    marginTop: 4,
+    fontSize: 16,
   },
   selectedOptionText: {
     color: '#0A333A',
+  },
+  boldText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  optionDescription: {
+    fontSize: 14,
+    color: '#e4e4e7',
   },
 });
 

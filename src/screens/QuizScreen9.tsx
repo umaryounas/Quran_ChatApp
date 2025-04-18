@@ -39,11 +39,11 @@ const QuizScreen9 = ({route}: {route: any}) => {
   ];
 
   const handleOptionSelect = (optionId: string) => {
+    setSelectedOption(optionId);
     const updatedUserData: User = {
       ...userData,
       quranGoal: optionId,
     };
-
     console.log('Updated onboarding data:', updatedUserData);
     navigation.navigate('QuizScreen10', {userData: updatedUserData});
   };
@@ -62,10 +62,10 @@ const QuizScreen9 = ({route}: {route: any}) => {
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={50}>
-        <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.safeArea}>
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+            <TouchableOpacity onPress={handleBack}>
               <Text style={styles.backButtonText}>←</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleSkip}>
@@ -123,16 +123,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
+  safeArea: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    paddingHorizontal: 0,
-    marginTop: 20,
-  },
-  backButton: {
-    padding: 0,
+    marginTop: 60,
+    marginBottom: 20,
   },
   backButtonText: {
     color: 'white',
@@ -145,13 +144,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   progressContainer: {
-    width: '100%',
-    marginVertical: 20,
+    marginBottom: 30,
   },
   progressBar: {
-    height: 4,
+    height: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderRadius: 2,
+    borderRadius: 3,
     overflow: 'hidden',
   },
   progress: {
@@ -160,28 +158,23 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    alignItems: 'flex-start',
-    width: '100%',
   },
   question: {
     color: 'white',
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 25,
+    marginBottom: 30,
   },
   optionsContainer: {
-    width: '100%',
-    marginTop: 20,
+    gap: 15,
   },
   option: {
-    width: '100%',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     borderRadius: 12,
-    marginBottom: 15,
     padding: 16,
   },
   selectedOption: {
-    backgroundColor: 'Gray',
+    backgroundColor: '#FFFFFF',
   },
   optionContent: {
     flexDirection: 'row',
@@ -196,14 +189,14 @@ const styles = StyleSheet.create({
   },
   optionText: {
     color: 'white',
-    fontSize: 18,
-    fontWeight: 'normal',
-  },
-  boldText: {
-    fontWeight: 'bold',
+    fontSize: 16,
   },
   selectedOptionText: {
     color: '#0A333A',
+  },
+  boldText: {
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

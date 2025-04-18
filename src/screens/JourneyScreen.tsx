@@ -7,9 +7,9 @@ import {
   SafeAreaView,
   Image,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import GradientBackground from '../components/GradientBackground';
-import { NavigationProp } from '../types/navigation';
+import {NavigationProp} from '../types/navigation';
 
 const JourneyScreen = () => {
   const navigation = useNavigation<NavigationProp>();
@@ -27,45 +27,46 @@ const JourneyScreen = () => {
             <Text style={styles.closeIcon}>✕</Text>
           </TouchableOpacity>
         </View>
-        
+
         <View style={styles.content}>
           <View style={styles.journeyHeaderContainer}>
-            <Image 
-              source={require('../assets/images/Logo.png')} 
-              style={styles.journeyLogo} 
+            <Image
+              source={require('../assets/images/Logo.png')}
+              style={styles.journeyLogo}
             />
           </View>
 
           <Text style={styles.journeyTitle}>Start Your Journey Today</Text>
           <Text style={styles.journeySubtitle}>
-            We worked hard to find the best pricing—affordable for you, while sustainable for us™
+            We worked hard to find the best pricing—affordable for you, while
+            sustainable for us™
           </Text>
 
           <View style={styles.benefitsContainer}>
             <View style={styles.benefitRow}>
-              <Image 
-                source={require('../assets/images/peace_icon.png')} 
-                style={styles.benefitIcon} 
+              <Image
+                source={require('../assets/images/peace_icon.png')}
+                style={styles.benefitIcon}
               />
               <Text style={styles.benefitText}>
                 Feel completely at peace the moment you say 'Allahu Akbar'.
               </Text>
             </View>
-            
+
             <View style={styles.benefitRow}>
-              <Image 
-                source={require('../assets/images/prayer_icon.png')} 
-                style={styles.benefitIcon} 
+              <Image
+                source={require('../assets/images/prayer_icon.png')}
+                style={styles.benefitIcon}
               />
               <Text style={styles.benefitText}>
                 Eliminate distractions and connect deeply in every prayer.
               </Text>
             </View>
-            
+
             <View style={styles.benefitRow}>
-              <Image 
-                source={require('../assets/images/star_icon.png')} 
-                style={styles.benefitIcon} 
+              <Image
+                source={require('../assets/images/star_icon.png')}
+                style={styles.benefitIcon}
               />
               <Text style={styles.benefitText}>
                 Transform Salah into a source of strength and clarity.
@@ -86,7 +87,7 @@ const JourneyScreen = () => {
                 <Text style={styles.planTitle}>Monthly Plan</Text>
                 <Text style={styles.planPrice}>$14.99/month</Text>
               </View>
-              
+
               <View style={[styles.planCard, styles.selectedPlan]}>
                 <View style={styles.discountBadge}>
                   <Text style={styles.discountText}>70% off</Text>
@@ -102,15 +103,18 @@ const JourneyScreen = () => {
 
           <View style={styles.footer}>
             <TouchableOpacity style={styles.gumButton} onPress={handleJourney}>
-              <Text style={styles.gumButtonText}>Yes! For the Price of a gum</Text>
+              <Text style={styles.gumButtonText}>
+                Yes! For the Price of a gum
+              </Text>
             </TouchableOpacity>
-            
+
             <Text style={styles.discreetText}>Purchase appears Discretely</Text>
-            
+
             <View style={styles.guaranteeContainer}>
-              <Text style={styles.guaranteeText}>Cancel Anytime ✅  -  Money back guarantee 🛡️</Text>
+              <Text style={styles.guaranteeText}>
+                Cancel Anytime ✅ - Money back guarantee 🛡️
+              </Text>
             </View>
-            
           </View>
         </View>
       </SafeAreaView>
@@ -128,17 +132,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    // paddingHorizontal: 10,
-    marginTop: 25,
+    paddingHorizontal: 25,
+    marginTop: 50,
   },
   headerTitle: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: '600',
   },
   closeIcon: {
     color: 'white',
-    fontSize: 24,
+    fontSize: 20,
   },
   content: {
     flex: 1,
